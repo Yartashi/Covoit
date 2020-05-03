@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table text-center">
+        <tr>
+            <th class="active text-center">Description</th>
+            <th class="active text-center">VilleDep</th>
+            <th class="active text-center">VilleDest</th>
+            <th class="active text-center">DateDep</th>
+            <th class="active text-center">NombePlacesMax</th>
+            <th class="active text-center">Statut</th>
+        </tr>
+
+        {% for trajet in trajets %}
+            <tr>
+                <td>{{ trajet.description }}</td>
+                <td>{{ trajet.villeDep }}</td>
+                <td>{{ trajet.villeDest }}</td>
+                <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
+                <td>{{ trajet.nombrePlacesMax }}</td>
+                <td>{{ trajet.statut }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
