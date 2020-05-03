@@ -10,18 +10,24 @@ namespace App\DataFixtures;
 
 
 use App\Entity\Inscription;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 
-class InscriptionFixtures
+class InscriptionFixtures extends Fixture implements DependentFixtureInterface
 {
     /**
      * @param ObjectManager $manager
      *
      * @return void
+     * @throws \Exception
      */
     public function load(ObjectManager $manager) : void
     {
         $Inscription1 = new Inscription();
-        $date = new \DateTime('+0 days');
+        $date = new DateTime('+0 days');
 
         $Inscription1 -> setUtilisateur($manager->merge($this->getReference('utilisateur-1')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
@@ -33,7 +39,7 @@ class InscriptionFixtures
         $manager->flush();
 
         $Inscription2 = new Inscription();
-        $date = new \DateTime('+0 days');
+        $date = new DateTime('+0 days');
 
         $Inscription2 -> setUtilisateur($manager->merge($this->getReference('utilisateur-2')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
@@ -45,7 +51,7 @@ class InscriptionFixtures
         $manager->flush();
 
         $Inscription3 = new Inscription();
-        $date = new \DateTime('+0 days');
+        $date = new DateTime('+0 days');
 
         $Inscription3 -> setUtilisateur($manager->merge($this->getReference('utilisateur-5')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
@@ -57,7 +63,7 @@ class InscriptionFixtures
         $manager->flush();
 
         $Inscription4 = new Inscription();
-        $date = new \DateTime('+1 days');
+        $date = new DateTime('+1 days');
 
         $Inscription4 -> setUtilisateur($manager->merge($this->getReference('utilisateur-3')))
             ->setTrajet($manager->merge($this->getReference('trajet-1')))
