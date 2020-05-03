@@ -27,11 +27,11 @@ class InscriptionFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager) : void
     {
         $Inscription1 = new Inscription();
-        $date = new DateTime('+0 days');
+        $date = new \DateTime('+1 days');
 
         $Inscription1 -> setUtilisateur($manager->merge($this->getReference('utilisateur-1')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
-            ->setMDateInsc($date)
+            ->setDateInsc($date)
             ->setNbPassage(1);
 
         $manager->persist($Inscription1);
@@ -39,11 +39,11 @@ class InscriptionFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
 
         $Inscription2 = new Inscription();
-        $date = new DateTime('+0 days');
+        $date = new \DateTime('+1 days');
 
         $Inscription2 -> setUtilisateur($manager->merge($this->getReference('utilisateur-2')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
-            ->setMDateInsc($date)
+            ->setDateInsc($date)
             ->setNbPassage(1);
 
         $manager->persist($Inscription2);
@@ -51,11 +51,11 @@ class InscriptionFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
 
         $Inscription3 = new Inscription();
-        $date = new DateTime('+0 days');
+        $date = new \DateTime('+1 days');
 
         $Inscription3 -> setUtilisateur($manager->merge($this->getReference('utilisateur-5')))
             ->setTrajet($manager->merge($this->getReference('trajet-2')))
-            ->setMDateInsc($date)
+            ->setDateInsc($date)
             ->setNbPassage(1);
 
         $manager->persist($Inscription3);
@@ -63,11 +63,11 @@ class InscriptionFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
 
         $Inscription4 = new Inscription();
-        $date = new DateTime('+1 days');
+        $date = new \DateTime('+2 days');
 
         $Inscription4 -> setUtilisateur($manager->merge($this->getReference('utilisateur-3')))
             ->setTrajet($manager->merge($this->getReference('trajet-1')))
-            ->setMDateInsc($date)
+            ->setDateInsc($date)
             ->setNbPassage(1);
 
         $manager->persist($Inscription4);
