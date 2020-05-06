@@ -16,4 +16,17 @@ class UtilisateurController extends AbstractController
             'controller_name' => 'UtilisateurController',
         ]);
     }
+
+    /**
+     * Lister tous les utilisateurs.
+     * @Route("/utilisateur/", name="utilisateur.list")
+     * @return Response
+     */
+    public function list() : Response
+    {
+        $utilisateurs = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
+        return $this->render('utilisateur/list.html.twig', [
+            'utilisateurs' => $utilisateurs,
+        ]);
+    }
 }
