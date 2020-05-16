@@ -58,8 +58,8 @@ class TrajetController extends AbstractController
     }
 
     /** 
-    * @Route("/stage/{slug}", name="stage.show")
-    * @param Stage $stage
+    * @Route("/trajet/{slug}", name="trajet.show")
+    * @param Trajet $trajet
     * @return Response
     */
     public function show(Trajet $trajet) : Response
@@ -67,5 +67,25 @@ class TrajetController extends AbstractController
         return $this->render('trajet/show.html.twig', [
             'trajets' => $trajet,
             ]);
+    }
+
+    /**
+    * Éditer un trajet.
+    * @Route("trajet/{id}/edit", name="trajet.edit")
+    * @param Request $request
+    * @param EntityManagerInterface $em
+    * @return RedirectResponse|Response
+    */
+    public function edit(Request $request, Trajet $trajet, EntityManagerInterface $em) : Response
+    {
+    $form = $this->createForm(TrajetType::class, $trajet);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+    $em->flush();
+    return $this->redirectToRoute('trajet.list');
+    }
+    return $this->render('trajet/create.html.twig', [
+    'form' => $form->createView(),
+    ]);
     }
 }

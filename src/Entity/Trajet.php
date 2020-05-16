@@ -19,12 +19,6 @@ class Trajet
      */
     private $id;
 
-    /**
-    * @var string
-    * @Gedmo\Slug(fields={"poste"})
-    * @ORM\Column(type="string", length=128, unique=true)
-    */
-    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -77,20 +71,6 @@ class Trajet
         $this->inscriptions = new ArrayCollection();
     }
 
-    /**
-    * @return string|null
-    */
-    public function getSlug() : ?string
-    {
-    return $this->slug;
-    }
-    /**
-    * @param string $slug
-    */
-    public function setSlug(string $slug): void
-    {
-    $this->slug = $slug;
-    }
 
     public function getId(): ?int
     {
