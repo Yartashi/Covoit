@@ -9,6 +9,7 @@
             <th class="active text-center">DateDep</th>
             <th class="active text-center">NombePlacesMax</th>
             <th class="active text-center">Statut</th>
+            <th class="active text-center">Conducteur_id</th>
         </tr>
 
         {% for trajet in trajets %}
@@ -18,7 +19,6 @@
                 <td>{{ trajet.villeDest }}</td>
                 <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
                 <td>{{ trajet.nombrePlacesMax }}</td>
-                <td>{{ trajet.statut }}</td>
             </tr>
         {% endfor %}
     </table>
