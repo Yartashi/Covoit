@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class TrajetController extends AbstractController
 {
     /**
@@ -54,5 +55,17 @@ class TrajetController extends AbstractController
         return $this->render('trajet/create.html.twig', [
         'form' => $form->createView(),
         ]);
+    }
+
+    /** 
+    * @Route("/stage/{slug}", name="stage.show")
+    * @param Stage $stage
+    * @return Response
+    */
+    public function show(Trajet $trajet) : Response
+    {
+        return $this->render('trajet/show.html.twig', [
+            'trajets' => $trajet,
+            ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrajetRepository")
@@ -17,6 +18,13 @@ class Trajet
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+    * @var string
+    * @Gedmo\Slug(fields={"poste"})
+    * @ORM\Column(type="string", length=128, unique=true)
+    */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,6 +75,21 @@ class Trajet
     {
         $this->commentaires = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
+    }
+
+    /**
+    * @return string|null
+    */
+    public function getSlug() : ?string
+    {
+    return $this->slug;
+    }
+    /**
+    * @param string $slug
+    */
+    public function setSlug(string $slug): void
+    {
+    $this->slug = $slug;
     }
 
     public function getId(): ?int
