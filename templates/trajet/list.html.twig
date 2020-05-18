@@ -10,7 +10,9 @@
             <th class="active text-center">NombePlacesMax</th>
             <th class="active text-center">Statut</th>
             <th class="active text-center">Conducteur_id</th>
-            <th class="active text-center">modifier</th>
+            <th class="active text-center">Modifier</th>
+            <th class="active text-center">Supprimer</th>
+            <th class="active text-center">Montrer</th>
         </tr>
 
         {% for trajet in trajets %}
@@ -20,7 +22,11 @@
                 <td>{{ trajet.villeDest }}</td>
                 <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
                 <td>{{ trajet.nombrePlacesMax }}</td>
+                <td>{{ trajet.statut }}</td>
+                <td></td>
                 <td><a href={{ path("trajet.edit",{id : trajet.id} ) }}>Modifier</a></td>
+                <td><a href={{ path("trajet.delete",{id : trajet.id} ) }}>Supprimer</a></td>
+                <td><a href={{ path("trajet.show",{id : trajet.id} ) }}>Montrer</a></td>
             </tr>
         {% endfor %}
     </table>

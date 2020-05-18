@@ -58,14 +58,14 @@ class TrajetController extends AbstractController
     }
 
     /** 
-    * @Route("/trajet/{slug}", name="trajet.show")
+    * @Route("/trajet/{id}/show", name="trajet.show")
     * @param Trajet $trajet
     * @return Response
     */
     public function show(Trajet $trajet) : Response
     {
         return $this->render('trajet/show.html.twig', [
-            'trajets' => $trajet,
+            'trajet' => $trajet,
             ]);
     }
 
@@ -78,14 +78,40 @@ class TrajetController extends AbstractController
     */
     public function edit(Request $request, Trajet $trajet, EntityManagerInterface $em) : Response
     {
-    $form = $this->createForm(TrajetType::class, $trajet);
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-    $em->flush();
-    return $this->redirectToRoute('trajet.list');
+        $form = $this->createForm(TrajetType::class, $trajet);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            return $this->redirectToRoute('trajet.list');
+        }
+        return $this->render('trajet/create.html.twig', [
+        'form' => $form->createView(),
+        ]);
     }
-    return $this->render('trajet/create.html.twig', [
-    'form' => $form->createView(),
-    ]);
+
+    /**
+    * Supprimer un trajet.
+    * @Route("trajet/{id}/delete", name="trajet.delete")
+    * @param Request $request
+    * @param Trajet $trajet
+    * @param EntityManagerInterface $em
+    * @return Response
+    */
+    public function delete(Request $request, Trajet $trajet, EntityManagerInterface $em) : Response
+    {
+        $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl('trajet.delete', ['id' => $trajet->getId()]))
+        ->getForm();
+        $form->handleRequest($request);
+        if ( ! $form->isSubmitted() || ! $form->isValid()) {
+            return $this->render('trajet/delete.html.twig', [
+            'trajet' => $trajet,
+            'form' => $form->createView(),
+            ]);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($trajet);
+        $em->flush();
+        return $this->redirectToRoute('trajet.list');
     }
 }

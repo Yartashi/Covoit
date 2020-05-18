@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <i class="pull-right">Publié le {{ trajet.dateDep|date('m/d/Y') }}</i>
+                    <i class="pull-right">Publié le {{ trajet.dateDep|date('d/m/Y') }}</i>
                 </div>
             </div>
 
@@ -25,26 +25,53 @@
                 <table class="table">
                 <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Nom Prénom</th>
                     <th>Email</th>
-                    <th>Téléphone</th>
+                    <th>Date commentaire</th>
+                    <th>messageComm</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for commentaire in trajet.commentaires %}
                     <tr>
-                        <td><a href="#">{{ commentaire.utilisateur }}</a></td>
-                        <td>{{ commentaire.dateComm }}</td>
-                        <td>{{ commentaire.messageCom }}</td>
+                        <td><a href="#">{{ commentaire.utilisateur.nom }} {{ commentaire.utilisateur.prenom }}</a></td>
+                        <td> {{ commentaire.utilisateur.mail }}</td>
+                     
+                        <td>{{ commentaire.dateComm|date('d/m/Y') }}</td>
+                        <td>{{ commentaire.messageComm }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
                 </table>
             </p>
+            <p>
+                <strong>Les Inscrits : <strong>
+                <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom Prénom</th>
+                    <th>Email</th>
+                    <th>Date d'inscription</th>
+                    <th>Nombre de Passagers</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for inscription in trajet.inscriptions %}
+                    <tr>
+                        <td><a href="#">{{ inscription.utilisateur.nom }} {{ inscription.utilisateur.prenom }}</a></td>
+                        <td> {{ inscription.utilisateur.mail }}</td>
+                     
+                        <td>{{ inscription.dateInscr|date('d/m/Y') }}</td>
+                        <td>{{ inscription.nbPassage }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            </p>
+
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <a class="btn btn-default" href="#">
+                    <a class="btn btn-default" href="/trajet">
                         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
                         Liste des trajets
                     </a>
