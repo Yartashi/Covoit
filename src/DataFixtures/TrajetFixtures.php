@@ -17,7 +17,7 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
     {
         $trajet1 = new trajet();
         $description = <<< _lorem
-Blabla de test 1
+Bonjour, départ à 14h, au rond point de Paris. N'hésitez pas à me contacter !
 _lorem;
 
         $trajet1->setConducteurId($manager->merge($this->getReference('utilisateur-1')))
@@ -30,7 +30,7 @@ _lorem;
 
         $trajet2 = new trajet();
         $description = <<< _lorem
-        Blabla de test 2
+        Si vous êtes intéressé, contactez moi.
 _lorem;
 
         $trajet2->setConducteurId($manager->merge($this->getReference('utilisateur-4')))
@@ -38,11 +38,28 @@ _lorem;
             ->setVilleDep('Paris')
             ->setVilleDest('Saint-Malo')
             ->setDateDep(new \DateTime('+5 days'))
-            ->setNombrePlacesMax(3)
+            ->setNombrePlacesMax(2)
             ->setStatut(1);
+
+            $trajet3 = new trajet();
+        $description = <<< _lorem
+        Si vous êtes intéressé, contactez moi par mail.
+_lorem;
+
+        $trajet3->setConducteurId($manager->merge($this->getReference('utilisateur-4')))
+            ->setDescription($description)
+            ->setVilleDep('Marseille')
+            ->setVilleDest('Lyon')
+            ->setDateDep(new \DateTime('-4 days'))
+            ->setNombrePlacesMax(3)
+            ->setStatut(2);
+
 
         $this->addReference('trajet-1', $trajet1);
         $this->addReference('trajet-2', $trajet2);
+        $this->addReference('trajet-3', $trajet3);
+
+        $manager->flush();
     }
 
     /**s
