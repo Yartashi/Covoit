@@ -18,9 +18,10 @@ class UtilisateurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('username', TextType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('mdp', PasswordType::class)
+            ->add('password', PasswordType::class)
             ->add('mail', EmailType::class)
             ->add('adresse', TextType::class)
             ->add('numTel', TextType::class)
@@ -37,10 +38,11 @@ class UtilisateurType extends AbstractType
                     'Anglais' => 'EN',
                 ]
             ])
-            ->add('role', ChoiceType::class, [
+            ->add('roles', ChoiceType::class, [
+                'multiple' => true,
                 'choices' => [
-                    'Administrateur' => 'admin',
-                    'Inscrit' => 'inscrit',
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'Utilisateur' => 'ROLE_USER',
                 ]
             ])
         ;

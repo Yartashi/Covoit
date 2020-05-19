@@ -6,7 +6,7 @@
         <div class="media-body">
             <div class="row">
                 <div class="col-sm-10">
-                    <h3 class="media-heading">{{ utilisateur.prenom }} {{ utilisateur.nom }}</h3>
+                    <h3 class="media-heading">{{ utilisateur.username }}</h3>
                 </div>
 
                 <div class="col-sm-10">
@@ -15,6 +15,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
+                                    <td>Login</td>
                                     <td>Nom</td>
                                     <td>Prénom</td>
                                     <td>E-mail</td>
@@ -23,6 +24,7 @@
                                     <td>Date de naissance</td>
                                 </tr>
                                 <tr>
+                                    <td>{{ utilisateur.username }}</td>
                                     <td>{{ utilisateur.nom }}</td>
                                     <td>{{ utilisateur.prenom }}</td>
                                     <td>{{ utilisateur.email }}</td>
@@ -52,7 +54,10 @@
                         <tr>
                             <td>{{ utilisateur.styleChoix }}</td>
                             <td>{{ utilisateur.langueChoix }}</td>
-                            <td>{{ utilisateur.role }}</td>
+                            <td>{% for role in utilisateur.roles %}
+                                {{ role }}
+                                {% endfor %}
+                            </td>
                         </tr>
                         </tbody>
                     </table>

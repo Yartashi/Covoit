@@ -4,9 +4,10 @@
     <table class="table text-center">
         <tr>
             <th class="active text-center">Id</th>
+            <th class="active text-center">Login</th>
             <th class="active text-center">Nom</th>
             <th class="active text-center">Prénom</th>
-            <th class="active text-center">Date de naiss.</th>
+            <th class="active text-center">Date de naissance</th>
             <th class="active text-center">E-mail</th>
             <th class="active text-center">Rôle</th>
         </tr>
@@ -14,11 +15,15 @@
         {% for utilisateur in utilisateurs %}
             <tr>
                 <td>{{ utilisateur.id }}</td>
+                <td>{{ utilisateur.username }}</td>
                 <td>{{ utilisateur.nom }}</td>
                 <td>{{ utilisateur.prenom }}</td>
                 <td>{{ utilisateur.dateNaiss|date("d/m/Y") }}</td>
                 <td>{{ utilisateur.mail }}</td>
-                <td>{{ utilisateur.role }}</td>
+                <td>{% for role in utilisateur.roles %}
+                    {{ role }}
+                    {% endfor %}
+                </td>
             </tr>
         {% endfor %}
     </table>

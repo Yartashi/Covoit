@@ -153,7 +153,7 @@ class Utilisateur implements UserInterface
 
     public function setPassword(string $mdp): self
     {
-        $this->password = $$mdp;
+        $this->password = $mdp;
 
         return $this;
     }
