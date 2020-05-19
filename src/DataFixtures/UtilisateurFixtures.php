@@ -28,7 +28,7 @@ class UtilisateurFixtures extends Fixture
         $utilisateur1->setDateNaiss($naiss)
             ->setStyleChoix(1)
             ->setLangueChoix("fr")
-            ->setRole("Inscrit");
+            ->setRole("ROLE_USER");
 
         $utilisateur2 = new Utilisateur();
         $utilisateur2->setUsername("Cam84")
@@ -43,7 +43,7 @@ class UtilisateurFixtures extends Fixture
         $utilisateur2->setDateNaiss($naiss)
             ->setStyleChoix(2)
             ->setLangueChoix("en")
-            ->setRole("Inscrit");
+            ->setRole("ROLE_USER");
 
         $utilisateur3 = new Utilisateur();
         $utilisateur3->setUsername("Amandine")
@@ -58,7 +58,7 @@ class UtilisateurFixtures extends Fixture
         $utilisateur3->setDateNaiss($naiss)
             ->setStyleChoix(1)
             ->setLangueChoix("fr")
-            ->setRole("Inscrit");
+            ->setRole("ROLE_USER");
 
         $utilisateur4 = new Utilisateur();
         $utilisateur4->setUsername("Becass")
@@ -88,7 +88,7 @@ class UtilisateurFixtures extends Fixture
         $utilisateur5->setDateNaiss($naiss)
             ->setStyleChoix(1)
             ->setLangueChoix("fr")
-            ->setRole("Administrateur");
+            ->setRole("ROLE_ADMIN");
 
         $manager->persist($utilisateur1);
         $manager->persist($utilisateur2);
