@@ -20,9 +20,9 @@ class Utilisateur implements UserInterface
     private $id;
 
     /**
-    * @ORM\Column(type="json")
+    * @ORM\Column(type="array")
     */
-    private $roles = [];
+    private $roles;
     
     /**
      * @ORM\Column(type="string", length=255)
@@ -95,14 +95,29 @@ class Utilisateur implements UserInterface
         $this->trajets = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
+        $this->roles = new ArrayCollection();
+
+        $this->roles[] = 'ROLE_USER';
     }
 
-    public function getRoles(): array
+    public function getRoles(): ArrayCollection
     {
-    $roles = $this->roles;
-    // guarantee every user at least has ROLE_USER
-    $roles[] = 'ROLE_USER';
-    return array_unique($roles);
+        return $this->roles;
+    }
+
+    public function setRoles(ArrayCollection $roles) 
+    {
+        $this->roles = $roles;
+    }
+
+    public function addRole(string $role) 
+    {
+        // TODO: Check unicity
+        $this->roles[] = $role;
+    }
+
+    public function removeRole(string $role) {
+        $this->roles->removeElement($role);
     }
 
     public function getId(): ?int
@@ -226,18 +241,6 @@ class Utilisateur implements UserInterface
     public function setLangueChoix(?string $langueChoix): self
     {
         $this->langueChoix = $langueChoix;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }

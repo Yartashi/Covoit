@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd500ae31cc25058cef6b83e3863ecfc",
+    "content-hash": "aa51df40ba57b52f3cdfa42b1828554e",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -7038,7 +7038,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "easycorp/easyadmin-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

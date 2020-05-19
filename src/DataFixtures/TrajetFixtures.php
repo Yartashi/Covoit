@@ -16,6 +16,7 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager) : void
     {
         $trajet1 = new trajet();
+
         $description = <<< _lorem
 Bonjour, départ à 14h, au rond point de Paris. N'hésitez pas à me contacter !
 _lorem;
@@ -29,6 +30,7 @@ _lorem;
             ->setStatut(1);
 
         $trajet2 = new trajet();
+        
         $description = <<< _lorem
         Si vous êtes intéressé, contactez moi.
 _lorem;
@@ -59,6 +61,10 @@ _lorem;
         $this->addReference('trajet-2', $trajet2);
         $this->addReference('trajet-3', $trajet3);
 
+        $manager->persist($trajet1);
+        $manager->persist($trajet2);
+        $manager->persist($trajet3);
+        
         $manager->flush();
     }
 

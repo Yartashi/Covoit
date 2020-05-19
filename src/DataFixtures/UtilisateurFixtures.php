@@ -3,6 +3,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Collections\ArrayCollection;
 //use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectManager;
 
@@ -27,8 +28,7 @@ class UtilisateurFixtures extends Fixture
         //$naiss = new DateTimeInterface("05/06/1996");
         $utilisateur1->setDateNaiss($naiss)
             ->setStyleChoix(1)
-            ->setLangueChoix("fr")
-            ->setRole("ROLE_USER");
+            ->setLangueChoix("fr");
 
         $utilisateur2 = new Utilisateur();
         $utilisateur2->setUsername("Cam84")
@@ -42,8 +42,7 @@ class UtilisateurFixtures extends Fixture
         //$naiss = new DateTimeInterface("10/02/1984");
         $utilisateur2->setDateNaiss($naiss)
             ->setStyleChoix(2)
-            ->setLangueChoix("en")
-            ->setRole("ROLE_USER");
+            ->setLangueChoix("en");
 
         $utilisateur3 = new Utilisateur();
         $utilisateur3->setUsername("Amandine")
@@ -57,8 +56,7 @@ class UtilisateurFixtures extends Fixture
         //$naiss = new DateTimeInterface("25/09/1962");
         $utilisateur3->setDateNaiss($naiss)
             ->setStyleChoix(1)
-            ->setLangueChoix("fr")
-            ->setRole("ROLE_USER");
+            ->setLangueChoix("fr");
 
         $utilisateur4 = new Utilisateur();
         $utilisateur4->setUsername("Becass")
@@ -72,8 +70,7 @@ class UtilisateurFixtures extends Fixture
         //$naiss = new DateTimeInterface("01/08/1986");
         $utilisateur4->setDateNaiss($naiss)
             ->setStyleChoix(1)
-            ->setLangueChoix("fr")
-            ->setRole("Inscrit");
+            ->setLangueChoix("fr");
         
         $utilisateur5 = new Utilisateur();
         $utilisateur5->setUsername("Paupey")
@@ -88,7 +85,7 @@ class UtilisateurFixtures extends Fixture
         $utilisateur5->setDateNaiss($naiss)
             ->setStyleChoix(1)
             ->setLangueChoix("fr")
-            ->setRole("ROLE_ADMIN");
+            ->addRole("ROLE_ADMIN");
 
         $manager->persist($utilisateur1);
         $manager->persist($utilisateur2);
