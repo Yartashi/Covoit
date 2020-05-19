@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -18,6 +19,11 @@ class Utilisateur
      */
     private $id;
 
+    /**
+    * @ORM\Column(type="json")
+    */
+    private $roles = [];
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -31,7 +37,12 @@ class Utilisateur
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $mdp;
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -63,10 +74,6 @@ class Utilisateur
      */
     private $langueChoix;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Trajet", mappedBy="conducteur_id")
@@ -90,6 +97,14 @@ class Utilisateur
         $this->inscriptions = new ArrayCollection();
     }
 
+    public function getRoles(): array
+    {
+    $roles = $this->roles;
+    // guarantee every user at least has ROLE_USER
+    $roles[] = 'ROLE_USER';
+    return array_unique($roles);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +122,18 @@ class Utilisateur
         return $this;
     }
 
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
     public function getPrenom(): ?string
     {
         return $this->prenom;
@@ -119,14 +146,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->mdp;
+        return $this->password;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $mdp): self
     {
-        $this->mdp = $mdp;
+        $this->password = $$mdp;
 
         return $this;
     }
@@ -307,4 +334,22 @@ class Utilisateur
 
         return $this;
     }
+
+        /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
 }
