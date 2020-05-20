@@ -22,17 +22,26 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div>
+                        <a href="/admin/utilisateur" class="btn btn-default navbar-btn">Administration</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
                         <a href="/nouveau-trajet" class="btn btn-default navbar-btn">Proposer un trajet</a>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <a href="/nouveau-utilisateur" class="btn btn-default navbar-btn">Créer un utilisateur</a>
+                        <a href="/nouveau-utilisateur" class="btn btn-default navbar-btn">S'inscrire</a>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <a href="/login" class="btn btn-default navbar-btn">Connexion</a>
+                        {% if app.user %}
+                            <a href="/logout" class="btn btn-default navbar-btn">Déconnexion</a>
+                        {% else %}
+                            <a href="/login" class="btn btn-default navbar-btn">Connexion</a>
+                        {% endif %}
                     </div>
                 </li>
             </ul>

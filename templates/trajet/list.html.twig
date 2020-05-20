@@ -9,10 +9,9 @@
             <th class="active text-center">DateDep</th>
             <th class="active text-center">NombePlacesMax</th>
             <th class="active text-center">Statut</th>
-            <th class="active text-center">Conducteur_id</th>
-            <th class="active text-center">Modifier</th>
-            <th class="active text-center">Supprimer</th>
-            <th class="active text-center">Montrer</th>
+            <th class="active text-center">Conducteur</th>
+            <th class="active text-center">Action</th>
+
         </tr>
 
         {% for trajet in trajets %}
@@ -22,11 +21,15 @@
                 <td>{{ trajet.villeDest }}</td>
                 <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
                 <td>{{ trajet.nombrePlacesMax }}</td>
-                <td>{{ trajet.statut }}</td>
-                <td></td>
-                <td><a href={{ path("trajet.edit",{id : trajet.id} ) }}>Modifier</a></td>
-                <td><a href={{ path("trajet.delete",{id : trajet.id} ) }}>Supprimer</a></td>
-                <td><a href={{ path("trajet.show",{id : trajet.id} ) }}>Montrer</a></td>
+                {% if trajet.statut == 1 %}
+                    <td>Disponible</td>
+                {% elseif trajet.statut == 2 %}
+                    <td>Terminé</td>
+                {% endif %}
+                <td>{{trajet.conducteurId.username}}</td>
+                <td><a href={{ path("trajet.edit",{id : trajet.id} )}} class="btn btn-primary"}} >Modifier</a>
+                <a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">Supprimer</a>
+                <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
             </tr>
         {% endfor %}
     </table>

@@ -161,6 +161,17 @@ class Trajet
         return $this;
     }
 
+    //Retourne le nombre de places restantes pour le trajet
+    public function calculerNbPlacesRestantes():int
+    {
+        $nb = 0;
+        foreach( $this->getInscriptions() as $inscr )
+        {
+            $nb = $nb + $inscr->getNbPassage();
+        }
+        return $this->getNombrePlacesMax() - $nb;
+    }
+
     /**
      * @return Collection|Commentaire[]
      */

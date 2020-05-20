@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Création / Modification d'une réservation :</h1>
+    {% if (trajet.calculerNbPlacesRestantes > 0)  %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Enregistrer</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+        
+    {% endif %}
+{% endblock %}

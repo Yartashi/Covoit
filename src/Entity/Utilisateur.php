@@ -100,9 +100,9 @@ class Utilisateur implements UserInterface
         $this->roles[] = 'ROLE_USER';
     }
 
-    public function getRoles(): ArrayCollection
+    public function getRoles(): array
     {
-        return $this->roles;
+        return $this->roles->toArray();
     }
 
     public function setRoles(ArrayCollection $roles) 

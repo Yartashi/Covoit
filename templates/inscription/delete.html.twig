@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="alert alert-danger">
+        <strong>Avertissement !</strong> Vous êtes en train de supprimer l'inscription suivante :
+        <ul>
+            <li><strong>Username : </strong> {{ inscription.utilisateur.username }}</li>
+            <li><strong>Date : </strong>{{ inscription.dateInscr|date('d/m/Y') }}</li>
+            <li><strong>Nombre de passagers : </strong>{{ inscription.nbPassage }}</li>
+
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse">
+    {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
+    {{ form_widget(form) }}
+        <a href="/trajet/{{inscription.trajet.id}}/show" class="btn btn-success" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Annuler</a>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes vous sûr ??')">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        Supprimer
+    </button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

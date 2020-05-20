@@ -25,7 +25,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Lister tous les utilisateurs.
-     * @Route("/utilisateur", name="utilisateur.list")
+     * @Route("/admin/utilisateur", name="utilisateur.list")
      * @return Response
      */
     public function list() : Response
@@ -114,5 +114,10 @@ class UtilisateurController extends AbstractController
         $em->remove($utilisateur);
         $em->flush();
         return $this->redirectToRoute('utilisateur.list');
+    }
+
+    public function __toString(): string
+    {
+        return 'Utilisateur';
     }
 }

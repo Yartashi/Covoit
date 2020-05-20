@@ -27,18 +27,13 @@
                                     <td>{{ utilisateur.username }}</td>
                                     <td>{{ utilisateur.nom }}</td>
                                     <td>{{ utilisateur.prenom }}</td>
-                                    <td>{{ utilisateur.email }}</td>
-                                    <td>{{ utilisateur.telephone }}</td>
+                                    <td>{{ utilisateur.mail }}</td>
+                                    <td>{{ utilisateur.numTel }}</td>
                                     <td>{{ utilisateur.adresse }}</td>
-                                    <td>{{ utilisateur.dateNaiss }}</td>
+                                    <td>{{ utilisateur.dateNaiss|date('d/m/Y') }}</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </p>
-                    <p><a class="btn btn-primary" href="#">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            Éditer
-                        </a>
                     </p>
                 </div>
                 <div class="col-sm-10">
@@ -62,22 +57,17 @@
                         </tbody>
                     </table>
                     </p>
-                    <p><a class="btn btn-primary" href="#">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            Éditer
-                        </a>
-                    </p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <a class="btn btn-default" href="#">
+                    <a class="btn btn-default" href="/admin/utilisateur">
                         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                        Liste des trajets
+                        Liste des utilisateur
                     </a>
 
-                    <a class="btn btn-primary" href="#">
+                    <a class="btn btn-primary" href={{ path("utilisateur.edit",{id : utilisateur.id})}} >
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         Éditer
                     </a>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Trajet;
+use App\Entity\Utilisateur;
 use App\Form\TrajetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,6 +49,9 @@ class TrajetController extends AbstractController
         $form = $this->createForm(TrajetType::class, $trajet);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $utilisateur= new Utilisateur;
+            $utilisateur = $this->get('security.context')->getToken()->getUser();
+            $trajet->setConducteurId($utilisateur);
             $em->persist($trajet);
             $em->flush();
             return $this->redirectToRoute('trajet.list');
