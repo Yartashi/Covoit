@@ -52,7 +52,7 @@ class InscriptionController extends AbstractController
         $form = $this->createForm(InscriptionType::class, $inscription);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            if (($idtrajet->calculerNbPlacesRestantes() - $inscription->getNbPassage()) > 0 )
+            if (($idtrajet->calculerNbPlacesRestantes() - $inscription->getNbPassage()) >= 0 )
             {
                 $date = new \DateTime("+0 days");
                 $inscription->setDateInscr($date);
@@ -103,7 +103,7 @@ class InscriptionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             if (
-                ($inscription->getTrajet()->calculerNbPlacesRestantes() - $inscription->getNbPassage() > 0) 
+                ($inscription->getTrajet()->calculerNbPlacesRestantes() - $inscription->getNbPassage() >= 0)
                 &&
                 ($inscription->getUtilisateur()->getId() === $utilisateur->getId())
                )

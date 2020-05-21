@@ -2,7 +2,6 @@
 
 {% block body %}
     <h1>Création / Modification d'une réservation :</h1>
-    {% if (trajet.calculerNbPlacesRestantes > 0)  %}
         {{ form_start(form) }}
         {{ form_widget(form) }}
         
@@ -13,6 +12,4 @@
             </div>
         </div>
         {{ form_end(form) }}
-        
-    {% endif %}
 {% endblock %}

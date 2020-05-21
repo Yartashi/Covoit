@@ -3,11 +3,10 @@
 {% block body %}
     <table class="table text-center">
         <tr>
-            <th class="active text-center">Description</th>
-            <th class="active text-center">VilleDep</th>
-            <th class="active text-center">VilleDest</th>
-            <th class="active text-center">DateDep</th>
-            <th class="active text-center">NombePlacesMax</th>
+            <th class="active text-center">Date</th>
+            <th class="active text-center">Départ</th>
+            <th class="active text-center">Destination</th>
+            <th class="active text-center">Places restantes</th>
             <th class="active text-center">Statut</th>
             <th class="active text-center">Conducteur</th>
             <th class="active text-center">Action</th>
@@ -16,11 +15,10 @@
 
         {% for trajet in trajets %}
             <tr>
-                <td>{{ trajet.description }}</td>
+                <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
                 <td>{{ trajet.villeDep }}</td>
                 <td>{{ trajet.villeDest }}</td>
-                <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
-                <td>{{ trajet.nombrePlacesMax }}</td>
+                <td>{{ trajet.calculerNbPlacesRestantes }}</td>
                 {% if trajet.statut == 1 %}
                     <td>Disponible</td>
                 {% elseif trajet.statut == 2 %}
