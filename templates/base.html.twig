@@ -18,59 +18,33 @@
 
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/trajet">Offres des trajets</a>
-        </div>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/trajet">Offres des trajets</a>      
+    {% if (app.user) %}
+        {% if is_granted('ROLE_USER') %}
+                    <a href="/nouveau-trajet" class="navbar-brand">{{ 'trajet-create'|trans }}</a>
+                    <a href="/utilisateur-trajets" class="navbar-brand">Mes annonces</a>
 
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                {% if (app.user) %}
-                    {% if is_granted('ROLE_USER') %}
-                        <li>
-                            <div>
-                                <a href="/nouveau-trajet" class="btn btn-default navbar-btn">{{ 'trajet-create'|trans }}</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <a href="/utilisateur-trajets" class="btn btn-default navbar-btn">Mes annonces</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <a href="/utilisateur-inscriptions" class="btn btn-default navbar-btn">Mes inscriptions</a>
-                            </div>
-                        </li>
+                    <a href="/utilisateur-inscriptions" class="navbar-brand">Mes inscriptions</a>
 
-                    {% if is_granted('ROLE_ADMIN') %}
-                <li>
-                    <div>
-                        <a href="/admin/utilisateur" class="btn btn-default navbar-btn">Administration</a>
-                    </div>
-                </li>
-                        {% endif %}
-                    {% endif %}
-                {% else %}
-                <li>
-                    <div>
-                        <a href="/nouveau-utilisateur" class="btn btn-default navbar-btn">S'inscrire</a>
-                    </div>
-                </li>
-                {% endif %}
-                <li>
-                    <div>
-                        {% if app.user %}
-                            <a href="/logout" class="btn btn-default navbar-btn">Déconnexion</a>
-                        {% else %}
-                            <a href="/login" class="btn btn-default navbar-btn">Connexion</a>
-                        {% endif %}
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+        {% if is_granted('ROLE_ADMIN') %}
+
+            <a href="/admin/utilisateur" class="navbar-brand">Administration</a>
+
+            {% endif %}
+        {% endif %}
+    {% else %}
+
+            <a href="/nouveau-utilisateur" class="navbar-brand">S'inscrire</a>
+
+    {% endif %}
+
+            {% if app.user %}
+                <a href="/logout" class="navbar-brand">Déconnexion</a>
+            {% else %}
+                <a href="/login" class="navbar-brand">Connexion</a>
+            {% endif %}
+
 </nav>
 
 <div class="container">
