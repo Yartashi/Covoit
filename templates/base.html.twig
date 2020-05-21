@@ -8,15 +8,13 @@
     {% block stylesheets %}{% endblock %}
 
     {% block javascripts %}{% endblock %}
-{% if app.user %}
-    {% if app.user.styleChoix == 1 %}
+
+    {% if not app.user or app.user.styleChoix == 1 %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {% elseif app.user.styleChoix == 2 %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    {% endif %}
     {% else %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-{% endif %}
+        <link rel="stylesheet" href="/css/bootstrap-dark.css">
+    {% endif %}
+
 
 <body>
 
