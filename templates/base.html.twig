@@ -20,21 +20,39 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
+                {% if (app.user) %}
+                    {% if is_granted('ROLE_USER') %}
+                        <li>
+                            <div>
+                                <a href="/nouveau-trajet" class="btn btn-default navbar-btn">Proposer un trajet</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="/utilisateur-trajets" class="btn btn-default navbar-btn">Mes annonces</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="/utilisateur-inscriptions" class="btn btn-default navbar-btn">Mes inscriptions</a>
+                            </div>
+                        </li>
+
+                    {% if is_granted('ROLE_ADMIN') %}
                 <li>
                     <div>
                         <a href="/admin/utilisateur" class="btn btn-default navbar-btn">Administration</a>
                     </div>
                 </li>
-                <li>
-                    <div>
-                        <a href="/nouveau-trajet" class="btn btn-default navbar-btn">Proposer un trajet</a>
-                    </div>
-                </li>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
                 <li>
                     <div>
                         <a href="/nouveau-utilisateur" class="btn btn-default navbar-btn">S'inscrire</a>
                     </div>
                 </li>
+                {% endif %}
                 <li>
                     <div>
                         {% if app.user %}

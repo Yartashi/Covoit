@@ -27,9 +27,21 @@
                     <td>Terminé</td>
                 {% endif %}
                 <td>{{trajet.conducteurId.username}}</td>
-                <td><a href={{ path("trajet.edit",{id : trajet.id} )}} class="btn btn-primary"}} >Modifier</a>
-                <a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">Supprimer</a>
-                <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+
+                {% if (not app.user) %}
+                    <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                {% else %}
+                    {% if (app.user.username == trajet.conducteurId.username) %}
+                    <td><a href={{ path("trajet.edit",{id : trajet.id} )}} class="btn btn-primary" >Modifier</a>
+                        <a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">Supprimer</a>
+                        <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <td><a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">Supprimer</a>
+                            <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                    {% else %}
+                        <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                    {% endif %}
+                {% endif %}
             </tr>
         {% endfor %}
     </table>

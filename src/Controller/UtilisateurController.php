@@ -51,7 +51,7 @@ class UtilisateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('utilisateur.list');
+            return $this->redirectToRoute('trajet.list');
         }
         return $this->render('utilisateur/create.html.twig', [
             'form'=>$form->createView(),
@@ -120,4 +120,32 @@ class UtilisateurController extends AbstractController
     {
         return 'Utilisateur';
     }
+
+
+    /**
+     * Lister tous les trajets créés par l'utilisateur.
+     * @Route("/utilisateur-trajets", name="utilisateur-trajets.list")
+     * @return Response
+     */
+    public function listTrajets() : Response
+    {
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('trajet/list.html.twig', [
+            'trajets' => $utilisateur->getTrajets(),
+        ]);
+    }
+
+    /**
+     * Lister tous les trajets auxquels l'utilisateur s'est inscrit.
+     * @Route("/utilisateur-inscriptions", name="utilisateur-inscriptions.list")
+     * @return Response
+     */
+    public function listInscriptions() : Response
+    {
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('inscription/list.html.twig', [
+            'inscriptions' => $utilisateur->getInscriptions(),
+        ]);
+    }
+
 }
