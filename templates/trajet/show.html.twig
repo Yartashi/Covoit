@@ -43,8 +43,12 @@
                         <td>{{ commentaire.dateComm|date('d/m/Y') }}</td>
                         <td>{{ commentaire.messageComm }}</td>
                         <td>
-                            <a class="btn btn-primary" href={{ path("commentaire.edit",{id : commentaire.id} )}} >Modifier</a>
-                            <a class="btn btn-danger" href={{ path("commentaire.delete",{id : commentaire.id} )}} >Supprimer</a>
+                            {% if (app.user.username == commentaire.utilisateur.username) %}
+                                <a class="btn btn-primary" href={{ path("commentaire.edit",{id : commentaire.id} )}} >Modifier</a>
+                                <a class="btn btn-danger" href={{ path("commentaire.delete",{id : commentaire.id} )}} >Supprimer</a>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-danger" href={{ path("commentaire.delete",{id : commentaire.id} )}} >Supprimer</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
@@ -78,8 +82,12 @@
                         <td>{{ inscription.dateInscr|date('d/m/Y') }}</td>
                         <td>{{ inscription.nbPassage }}</td>
                         <td>
-                            <a class="btn btn-primary" href={{ path("inscription.edit",{id : inscription.id} )}} >Modifier</a>
-                            <a class="btn btn-danger" href={{ path("inscription.delete",{id : inscription.id} )}} >Supprimer</a>
+                            {% if (app.user.username == inscription.utilisateur.username) %}
+                                <a class="btn btn-primary" href={{ path("inscription.edit",{id : inscription.id} )}} >Modifier</a>
+                                <a class="btn btn-danger" href={{ path("inscription.delete",{id : inscription.id} )}} >Supprimer</a>
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-danger" href={{ path("inscription.delete",{id : inscription.id} )}} >Supprimer</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

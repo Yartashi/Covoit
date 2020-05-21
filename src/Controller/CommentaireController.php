@@ -94,8 +94,16 @@ class CommentaireController extends AbstractController
     {
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
+
+        $utilisateur= new Utilisateur();
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->flush();
+            if($commentaire->getUtilisateur()->getId() === $utilisateur->getId())
+            {
+                $em->flush();
+            }
+           
             return $this->redirectToRoute("trajet.show",['id'=>$commentaire->getTrajet()->getId()]);
         }
         return $this->render('commentaire/create.html.twig', [
@@ -117,6 +125,10 @@ class CommentaireController extends AbstractController
         ->setAction($this->generateUrl('commentaire.delete', ['id' => $commentaire->getId()]))
         ->getForm();
         $form->handleRequest($request);
+        
+        $utilisateur= new Utilisateur();
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+
         if ( ! $form->isSubmitted() || ! $form->isValid()) {
             return $this->render('commentaire/delete.html.twig', [
             'commentaire' => $commentaire,
@@ -124,8 +136,11 @@ class CommentaireController extends AbstractController
             ]);
         }
         $em = $this->getDoctrine()->getManager();
-        $em->remove($commentaire);
-        $em->flush();
+        if( $commentaire->getUtilisateur()->getId() === $utilisateur->getId() || in_array('ROLE_ADMIN',$utilisateur->getRoles()) )
+            {
+                $em->remove($commentaire);
+                $em->flush();
+            }
         return $this->redirectToRoute("trajet.show",['id'=>$commentaire->getTrajet()->getId()]);
     }
 }

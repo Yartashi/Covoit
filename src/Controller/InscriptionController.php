@@ -97,8 +97,16 @@ class InscriptionController extends AbstractController
     {
         $form = $this->createForm(InscriptionType::class, $inscription);
         $form->handleRequest($request);
+        
+        $utilisateur= new Utilisateur();
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+
         if ($form->isSubmitted() && $form->isValid()) {
-            if (($inscription->getTrajet()->calculerNbPlacesRestantes() - $inscription->getNbPassage()) > 0 )
+            if (
+                ($inscription->getTrajet()->calculerNbPlacesRestantes() - $inscription->getNbPassage() > 0) 
+                &&
+                ($inscription->getUtilisateur()->getId() === $utilisateur->getId())
+               )
             {
                 $em->flush();
             }
@@ -123,15 +131,23 @@ class InscriptionController extends AbstractController
         ->setAction($this->generateUrl('inscription.delete', ['id' => $inscription->getId()]))
         ->getForm();
         $form->handleRequest($request);
+        
+        $utilisateur= new Utilisateur();
+        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+
         if ( ! $form->isSubmitted() || ! $form->isValid()) {
             return $this->render('inscription/delete.html.twig', [
             'inscription' => $inscription,
             'form' => $form->createView(),
             ]);
         }
+        
         $em = $this->getDoctrine()->getManager();
-        $em->remove($inscription);
-        $em->flush();
+        if ( $inscription->getUtilisateur()->getId() === $utilisateur->getId() || in_array('ROLE_ADMIN',$utilisateur->getRoles()) )
+        {
+            $em->remove($inscription);
+            $em->flush();
+        }
         return $this->redirectToRoute("trajet.show",['id'=>$inscription->getTrajet()->getId()]);
     }
 }
