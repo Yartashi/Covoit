@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Détails d'un trajet 
+    <h1>{{ 'details-trajet'|trans }}</h1>
     <div class="card" style="margin-top: 80px;">
         <div class="media-body">
             <div class="row">
@@ -72,13 +72,13 @@
             
             <div class="col-sm-10">
             <p>
-                <strong>{{ ''|trans }}Les passagers : <strong>
+                <strong>{{ 'passagers'|trans }}<strong>
                 <table class="table">
                 <thead>
                 <tr>
                     <th>{{ 'username'|trans }}</th>
                     <th>{{ 'date-inscr'|trans }}</th>
-                    <th>{{ 'nd-places'|trans }}</th>
+                    <th>{{ 'nombre-places'|trans }}</th>
                     <th>{{ 'action'|trans }}</th>
                 </tr>
                 </thead>

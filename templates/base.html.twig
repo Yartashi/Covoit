@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Gestion des offres de trajets{% endblock %}</title>
+    <title>{% block title %}{{ 'titre'|trans }}{% endblock %}</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
@@ -21,36 +21,37 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/trajet">Offres des trajets</a>
-    <a class="navbar-brand" href="/search-trajet">Rechercher des trajets</a>      
+    <a class="navbar-brand" href="/trajet">{{ 'offres-trajets'|trans }}</a>
+    <a class="navbar-brand" href="/search-trajet">{{ 'rechercher-trajet'|trans }}</a>
     {% if (app.user) %}
         {% if is_granted('ROLE_USER') %}
-                    <a href="/nouveau-trajet" class="navbar-brand">{{ 'trajet-create'|trans }}</a>
-                    <a href="/utilisateur-trajets" class="navbar-brand">Mes annonces</a>
-                    <a href="/utilisateur-inscriptions" class="navbar-brand">Mes inscriptions</a>
-                    <a href={{ path("utilisateur.edit", {id : app.user.id} )}} class="navbar-brand" >Mon profil</a>
+                    <a href="/nouveau-trajet" class="navbar-brand">{{ 'creer-trajet'|trans }}</a>
+                    <a href="/utilisateur-trajets" class="navbar-brand">{{ 'mes-annonces'|trans }}</a>
+                    <a href="/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
+                    <a href={{ path("utilisateur.edit", {id : app.user.id} )}} class="navbar-brand" >{{ 'mon-profil'|trans }}</a>
 
         {% if is_granted('ROLE_ADMIN') %}
 
-            <a href="/admin/utilisateur" class="navbar-brand">Administration</a>
+            <a href="/admin/utilisateur" class="navbar-brand">{{ 'administration'|trans }}</a>
 
             {% endif %}
         {% endif %}
     {% else %}
 
-            <a href="/nouveau-utilisateur" class="navbar-brand">S'inscrire</a>
+            <a href="/nouveau-utilisateur" class="navbar-brand">{{ 'sign-in'|trans }}</a>
 
     {% endif %}
 
             {% if app.user %}
-                <a href="/logout" class="navbar-brand">Déconnexion</a>
+                <a href="/logout" class="navbar-brand">{{ 'logout'|trans }}</a>
             {% else %}
-                <a href="/login" class="navbar-brand">Connexion</a>
+                <a href="/login" class="navbar-brand">{{ 'login'|trans }}</a>
             {% endif %}
 
             <div class="dropdown show">
-            <a class="navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Langages
+            <a class="navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                {{ 'langues'|trans }}
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {% for key,locale in locales %}

@@ -3,21 +3,22 @@
 {% block body %}
 
     <div class="alert alert-danger">
-        <strong>Avertissement !</strong> Vous êtes en train de supprimer l'inscription suivante :
+        <strong>{{ 'avertissement'|trans }}</strong> {{ 'msg-suppr-inscription'|trans }}
         <ul>
-            <li><strong>Username : </strong> {{ inscription.utilisateur.username }}</li>
-            <li><strong>Date : </strong>{{ inscription.dateInscr|date('d/m/Y') }}</li>
-            <li><strong>Nombre de passagers : </strong>{{ inscription.nbPassage }}</li>
+            <li><strong>{{ 'username'|trans }}: </strong> {{ inscription.utilisateur.username }}</li>
+            <li><strong>{{ 'date'|trans }}: </strong>{{ inscription.dateInscr|date('d/m/Y') }}</li>
+            <li><strong>{{ 'nombre-passagers'|trans }}: </strong>{{ inscription.nbPassage }}</li>
 
         </ul>
     </div>
     <div class="collapse navbar-collapse">
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
-        <a href="/trajet/{{inscription.trajet.id}}/show" class="btn btn-success" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Annuler</a>
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes vous sûr ??')">
+        <a href="/trajet/{{inscription.trajet.id}}/show" class="btn btn-success" role="button">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>{{ 'cancel'|trans }}</a>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('{{ "confirm"|trans }}')">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        Supprimer
+            {{ 'suppr'|trans }}
     </button>
     {{ form_end(form) }}
     </div>

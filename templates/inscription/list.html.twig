@@ -3,13 +3,13 @@
 {% block body %}
     <table class="table text-center">
         <tr>
-            <th class="active text-center">Date</th>
-            <th class="active text-center">Départ</th>
-            <th class="active text-center">Destination</th>
-            <th class="active text-center">Places restantes</th>
-            <th class="active text-center">Statut</th>
-            <th class="active text-center">Conducteur</th>
-            <th class="active text-center">Action</th>
+            <th class="active text-center">{{ 'date'|trans }}</th>
+            <th class="active text-center">{{ 'depart'|trans }}</th>
+            <th class="active text-center">{{ 'arrivee'|trans }}</th>
+            <th class="active text-center">{{ 'pl-rest'|trans }}</th>
+            <th class="active text-center">{{ 'status2'|trans }}</th>
+            <th class="active text-center">{{ 'conducteur'|trans }}</th>
+            <th class="active text-center">{{ 'action'|trans }}</th>
 
         </tr>
 
@@ -20,24 +20,31 @@
                 <td>{{ inscription.trajet.villeDest }}</td>
                 <td>{{ inscription.trajet.calculerNbPlacesRestantes }}</td>
                 {% if inscription.trajet.statut == 1 %}
-                    <td>Disponible</td>
+                    <td>{{ 'dispo'|trans }}</td>
                 {% elseif inscription.trajet.statut == 2 %}
-                    <td>Terminé</td>
+                    <td>{{ 'pas-dispo'|trans }}</td>
                 {% endif %}
                 <td>{{ inscription.trajet.conducteurId.username }}</td>
 
                 {% if (not app.user) %}
-                    <td><a href={{ path("trajet.show", {id : inscription.trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                    <td><a href={{ path("trajet.show",
+                            {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                 {% else %}
                     {% if (app.user.username == inscription.utilisateur.username) %}
-                    <td><a href={{ path("inscription.edit", {id : inscription.id} )}} class="btn btn-primary" >Modifier</a>
-                        <a href={{ path("inscription.delete", {id : inscription.id} ) }} class="btn btn-danger">Supprimer</a>
-                        <a href={{ path("trajet.show", {id : inscription.trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                    <td><a href={{ path("inscription.edit",
+                            {id : inscription.id} )}} class="btn btn-primary">{{ 'edit'|trans }}</a>
+                        <a href={{ path("inscription.delete",
+                            {id : inscription.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                        <a href={{ path("trajet.show",
+                            {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% elseif is_granted('ROLE_ADMIN') %}
-                        <td><a href={{ path("inscription.delete", {id : inscription.id} ) }} class="btn btn-danger">Supprimer</a>
-                            <a href={{ path("trajet.show",{id : inscription.trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                        <td><a href={{ path("inscription.delete",
+                                {id : inscription.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                            <a href={{ path("trajet.show",
+                                {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% else %}
-                        <td><a href={{ path("trajet.show",{id : inscription.trajet.id} ) }} class="btn btn-info">Afficher</a></td>
+                        <td><a href={{ path("trajet.show",
+                                {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% endif %}
                 {% endif %}
             </tr>

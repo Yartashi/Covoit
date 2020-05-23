@@ -1,25 +1,29 @@
-title: Covoiturage
-trajets-list: 'Offres de trajets'
-trajet-create: 'Créer un trajet'
-utilisateur-trajets: 'Mes annonces'
-utilisateur-inscriptions: 'Mes inscriptions'
-admin-utilisateur: Administration
+titre: RoadTrip
+offres-trajets: 'Offres de trajets'
+creer-trajet: 'Créer un trajet'
+mes-annonces: 'Mes annonces'
+mes-inscriptions: 'Mes inscriptions'
+rechercher-trajet: 'Rechercher un trajet'
+administration: Administration
 sign-in: 'S''inscrire'
 logout: Déconnexion
 login: Connexion
+langues: Langues
+mon-profil: 'Mon profil'
 logged-in-as: 'Vous êtes connecté en tant que '
 invite-sign-in: 'Veuillez vous connecter'
 username: 'Pseudonyme '
 password: 'Mot de passe'
-avertissement: 'Avertissement !'
-msg-suppr-trajet: ' Vous êtes sur le point de supprimer le trajet suivant :'
+avertissement: 'Attention !'
+msg-suppr-trajet: 'Vous êtes sur le point de supprimer le trajet suivant :'
 msg-suppr-utilisateur: 'Vous êtes sur le point de supprimer l''utilisateur suivant :'
+msg-suppr-commentaire: 'Vous êtes sur le point de supprimer le commentaire suivant :'
+msg-suppr-inscription: 'Vous êtes sur le point de supprimer la réservation suivante :'
 description: 'Description : '
 ville-dep: 'Ville de départ : '
 ville-dest: 'Ville de destination : '
 date-dep: 'Date de départ : '
-nb-places: 'Nombre de places :'
-date: Date
+date: 'Date '
 date-naissance: 'Date de naissance '
 date-publi: 'Publié le '
 date-inscr: 'Date d''inscription'
@@ -39,17 +43,21 @@ cancel: Annuler
 enregistrer: Enregistrer
 confirm: 'Êtes-vous sûr ?'
 comments: Commentaires
-message: Message
+message: 'Message '
 add-comment: 'Ajouter un commentaire'
 reserver: Réserver
 list-des-trajets: 'Liste des trajets'
 creation-modification-compte-utilisateur: 'Création / Modification d''un compte utilisateur :'
+creation-modification-commentaire: 'Création / Modification d''un commentaire :'
+creation-modification-reservation: 'Création / Modification d''une réservation :'
+creation-modification-trajet: 'Création / Modification d''un trajet :'
 id: Id
 nom: 'Nom '
 prenom: 'Prénom '
 email: 'E-mail '
 nombre-places: 'Nombre de places : '
-save: Enregistrer
+nombre-passagers: 'Nombre de passagers '
+passagers: 'Passagers :'
 role: Rôle
 details-utilisateur: 'Détails de l''utilisateur'
 informations-personnelles: 'Informations personnelles'
@@ -59,5 +67,5 @@ parametres: Paramètres
 style: Style
 langue: Langue
 liste-utilisateurs: 'Liste des utilisateurs'
-'': __
-nd-places: __nd-places
+rechercher: Rechercher
+details-trajet: 'Détails du trajet'

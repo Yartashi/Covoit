@@ -1,63 +1,71 @@
-title: Carpooling
-trajets-list: 'Trip ads'
-trajet-create: 'Create a trip'
-utilisateur-trajets: 'My trip ads'
-utilisateur-inscriptions: 'My inscriptions'
-admin-utilisateur: Administration
+titre: RoadTrip
+offres-trajets: 'Trip ads'
+creer-trajet: 'Create a trip'
+mes-annonces: 'My trip ads'
+mes-inscriptions: 'My bookings'
+rechercher-trajet: 'Find a trip'
+administration: Administration
 sign-in: 'Sign in'
 logout: Logout
 login: Login
-logged-in-as: 'You are logged in as'
-invite-sign-in: 'Please sign in'
-username: Username
+langues: Languages
+mon-profil: 'My profile'
+logged-in-as: 'You are logged in as '
+invite-sign-in: 'Please log in'
+username: 'Username '
 password: Password
-avertissement: 'Avertissement !'
-msg-suppr-trajet: ' Vous êtes sur le point de supprimer le trajet suivant :'
-msg-suppr-utilisateur: 'Vous êtes sur le point de supprimer l''utilisateur suivant :'
-description: 'Description : '
-ville-dep: 'Ville de départ : '
-ville-dest: 'Ville de destination : '
-date-dep: 'Date de départ : '
-nb-places: 'Nombre de places :'
+avertissement: 'Careful !'
+msg-suppr-trajet: 'You are about to delete this trip:'
+msg-suppr-utilisateur: 'You are about to delete this user:'
+msg-suppr-commentaire: 'You are about to delete this comment:'
+msg-suppr-inscription: 'You are about to delete this booking:'
+description: 'Description: '
+ville-dep: 'Departure city: '
+ville-dest: 'Arrival city: '
+date-dep: 'Departure date: '
 date: Date
-date-naissance: 'Date de naissance '
-date-publi: 'Publié le '
-date-inscr: 'Date d''inscription'
-depart: Départ
+date-naissance: 'Birth date'
+date-publi: 'Published on'
+date-inscr: 'Inscription date'
+depart: Departure
 arrivee: Destination
-pl-rest: 'Places restantes'
+pl-rest: 'Seats remaining'
 action: Action
-status: 'Statut : '
-status2: Statut
-conducteur: Conducteur
-dispo: Disponible
-pas-dispo: Clos
-show: Afficher
-edit: Modifier
-suppr: Supprimer
-cancel: Annuler
-enregistrer: Enregistrer
-confirm: 'Êtes-vous sûr ?'
-comments: Commentaires
+status: 'Status: '
+status2: Status
+conducteur: Driver
+dispo: Available
+pas-dispo: Closed
+show: Show
+edit: Edit
+suppr: Delete
+cancel: Cancel
+enregistrer: Save
+confirm: 'Are you quite sure?'
+comments: Comments
 message: Message
-add-comment: 'Ajouter un commentaire'
-reserver: Réserver
-list-des-trajets: 'Liste des trajets'
-creation-modification-compte-utilisateur: 'Création / Modification d''un compte utilisateur :'
+add-comment: 'Add a comment'
+reserver: Book
+list-des-trajets: 'Trips list'
+creation-modification-compte-utilisateur: 'Creation / Edition of a user account:'
+creation-modification-commentaire: 'Creation / Edition of a comment:'
+creation-modification-reservation: 'Creation / Edition of a booking:'
+creation-modification-trajet: 'Creation / Edition of a trip:'
 id: Id
-nom: 'Nom '
-prenom: 'Prénom '
+nom: 'Surname '
+prenom: 'First name '
 email: 'E-mail '
-nombre-places: 'Nombre de places : '
-save: Enregistrer
-role: Rôle
-details-utilisateur: 'Détails de l''utilisateur'
-informations-personnelles: 'Informations personnelles'
-telephone: Téléphone
-adresse: Adresse
-parametres: Paramètres
+nombre-places: 'Number of seats: '
+nombre-passagers: 'Number of passengers'
+passagers: 'Passengers :'
+role: Role
+details-utilisateur: 'User information'
+informations-personnelles: 'Personal informations'
+telephone: Phone
+adresse: Address
+parametres: Parameters
 style: Style
-langue: Langue
-liste-utilisateurs: 'Liste des utilisateurs'
-'': __
-nd-places: __nd-places
+langue: Language
+liste-utilisateurs: 'List of users'
+rechercher: Search
+details-trajet: 'Trip information'
