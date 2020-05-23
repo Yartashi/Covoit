@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TrajetSearchType extends AbstractType
@@ -16,8 +17,8 @@ class TrajetSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('villeDep', TextType::class,)
-            ->add('villeDest', TextType::class,)
+            ->add('villeDep', TextType::class,['constraints'=>[new Length(['max'=>255]),]])
+            ->add('villeDest', TextType::class,['constraints'=>[new Length(['max'=>255]),]])
             ->add('dateDep',DateType::class,)
             ->add('statut', ChoiceType::class,[
         'choices' => [
