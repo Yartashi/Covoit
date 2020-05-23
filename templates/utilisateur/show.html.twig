@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Détails de l'utilisateur {{ utilisateur.id }} :</h1>
+    <h1>{{ 'details-utilisateur'|trans }} {{ utilisateur.id }} :</h1>
     <div class="media" style="margin-top: 60px;">
         <div class="media-body">
             <div class="row">
@@ -10,18 +10,18 @@
                 </div>
 
                 <div class="col-sm-10">
-                    <h4 class="media-heading">Informations personnelles</h4>
+                    <h4 class="media-heading">{{ 'informations-personnelles'|trans }}</h4>
                     <p>
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td>Login</td>
-                                    <td>Nom</td>
-                                    <td>Prénom</td>
-                                    <td>E-mail</td>
-                                    <td>Téléphone</td>
-                                    <td>Adresse</td>
-                                    <td>Date de naissance</td>
+                                    <td>{{ 'username'|trans }}</td>
+                                    <td>{{ 'nom'|trans }}</td>
+                                    <td>{{ 'prenom'|trans }}</td>
+                                    <td>{{ 'email'|trans }}</td>
+                                    <td>{{ 'telephone'|trans }}</td>
+                                    <td>{{ 'adresse'|trans }}</td>
+                                    <td>{{ 'date-naissance'|trans }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ utilisateur.username }}</td>
@@ -37,14 +37,14 @@
                     </p>
                 </div>
                 <div class="col-sm-10">
-                    <h4 class="media-heading" id="params">Paramètres</h4>
+                    <h4 class="media-heading" id="params">{{ 'parametres'|trans }}</h4>
                     <p>
                     <table class="table">
                         <tbody>
                         <tr>
-                            <td>Style</td>
-                            <td>Langue</td>
-                            <td>Rôle</td>
+                            <td>{{ 'style'|trans }}</td>
+                            <td>{{ 'langue'|trans }}</td>
+                            <td>{{ 'role'|trans }}</td>
                         </tr>
                         <tr>
                             <td>{{ utilisateur.styleChoix }}</td>
@@ -64,12 +64,13 @@
                 <div class="col-sm-12 text-right">
                     <a class="btn btn-default" href="/admin/utilisateur">
                         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                        Liste des utilisateur
+                        {{ 'liste-utilisateurs'|trans }}
                     </a>
 
-                    <a class="btn btn-primary" href={{ path("utilisateur.edit",{id : utilisateur.id})}} >
+                    <a class="btn btn-primary" href={{ path("utilisateur.edit",
+                        {id : utilisateur.id})}} >
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        Éditer
+                        {{ 'edit'|trans }}
                     </a>
                 </div>
             </div>

@@ -1,1 +1,63 @@
-trajet-create: '__créer un trajet'
+title: Covoiturage
+trajets-list: 'Offres de trajets'
+trajet-create: 'Créer un trajet'
+utilisateur-trajets: 'Mes annonces'
+utilisateur-inscriptions: 'Mes inscriptions'
+admin-utilisateur: Administration
+sign-in: 'S''inscrire'
+logout: Déconnexion
+login: Connexion
+logged-in-as: 'Vous êtes connecté en tant que '
+invite-sign-in: 'Veuillez vous connecter'
+username: 'Pseudonyme '
+password: 'Mot de passe'
+avertissement: 'Avertissement !'
+msg-suppr-trajet: ' Vous êtes sur le point de supprimer le trajet suivant :'
+msg-suppr-utilisateur: 'Vous êtes sur le point de supprimer l''utilisateur suivant :'
+description: 'Description : '
+ville-dep: 'Ville de départ : '
+ville-dest: 'Ville de destination : '
+date-dep: 'Date de départ : '
+nb-places: 'Nombre de places :'
+date: Date
+date-naissance: 'Date de naissance '
+date-publi: 'Publié le '
+date-inscr: 'Date d''inscription'
+depart: Départ
+arrivee: Destination
+pl-rest: 'Places restantes'
+action: Action
+status: 'Statut : '
+status2: Statut
+conducteur: Conducteur
+dispo: Disponible
+pas-dispo: Clos
+show: Afficher
+edit: Modifier
+suppr: Supprimer
+cancel: Annuler
+enregistrer: Enregistrer
+confirm: 'Êtes-vous sûr ?'
+comments: Commentaires
+message: Message
+add-comment: 'Ajouter un commentaire'
+reserver: Réserver
+list-des-trajets: 'Liste des trajets'
+creation-modification-compte-utilisateur: 'Création / Modification d''un compte utilisateur :'
+id: Id
+nom: 'Nom '
+prenom: 'Prénom '
+email: 'E-mail '
+nombre-places: 'Nombre de places : '
+save: Enregistrer
+role: Rôle
+details-utilisateur: 'Détails de l''utilisateur'
+informations-personnelles: 'Informations personnelles'
+telephone: Téléphone
+adresse: Adresse
+parametres: Paramètres
+style: Style
+langue: Langue
+liste-utilisateurs: 'Liste des utilisateurs'
+'': __
+nd-places: __nd-places

@@ -3,23 +3,24 @@
 {% block body %}
 
     <div class="alert alert-danger">
-        <strong>Avertissement !</strong> Vous êtes en train de supprimer le trajet suivant :
+        <strong>{{ 'avertissement'|trans }}</strong>{{ 'msg-suppr-trajet'|trans }}
         <ul>
-            <li><strong>Description : </strong> {{ trajet.description }}</li>
-            <li><strong>Ville de départ : </strong>{{ trajet.villeDep }}</li>
-            <li><strong>Ville de destination : </strong>{{ trajet.villeDest }}</li>
-            <li><strong>Date de départ : </strong>{{ trajet.dateDep|date('m/d/Y')  }}</li>
-            <li><strong>Nombre de places : </strong>{{ trajet.nombrePlacesMax }}</li>
-            <li><strong>Statut : </strong>{{ trajet.statut }}</li>
+            <li><strong>{{ 'description'|trans }}</strong> {{ trajet.description }}</li>
+            <li><strong>{{ 'ville-dep'|trans }}</strong>{{ trajet.villeDep }}</li>
+            <li><strong>{{ 'ville-dest'|trans }}</strong>{{ trajet.villeDest }}</li>
+            <li><strong>{{ 'date-dep'|trans }}</strong>{{ trajet.dateDep|date('m/d/Y')  }}</li>
+            <li><strong>{{ 'nombre-places'|trans }} </strong>{{ trajet.nombrePlacesMax }}</li>
+            <li><strong>{{ 'status'|trans }}</strong>{{ trajet.statut }}</li>
         </ul>
     </div>
     <div class="collapse navbar-collapse">
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
-        <a href="{{ path('trajet.list') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Annuler</a>
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes vous sûr ??')">
+        <a href="{{ path('trajet.list') }}" class="btn btn-success" role="button">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>{{ 'cancel'|trans }}</a>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('{{ "confirm"|trans }}')">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        Supprimer
+            {{ 'suppr'|trans }}
     </button>
     {{ form_end(form) }}
     </div>

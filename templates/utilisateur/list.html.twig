@@ -3,14 +3,14 @@
 {% block body %}
     <table class="table text-center">
         <tr>
-            <th class="active text-center">Id</th>
-            <th class="active text-center">Login</th>
-            <th class="active text-center">Nom</th>
-            <th class="active text-center">Prénom</th>
-            <th class="active text-center">Date de naissance</th>
-            <th class="active text-center">E-mail</th>
-            <th class="active text-center">Rôle</th>
-            <th class="active text-center">Action</th>
+            <th class="active text-center">{{ 'id'|trans }}</th>
+            <th class="active text-center">{{ 'username'|trans }}Login</th>
+            <th class="active text-center">{{ 'nom'|trans }}Nom</th>
+            <th class="active text-center">{{ 'prenom'|trans }}Prénom</th>
+            <th class="active text-center">{{ 'date-naissance'|trans }}Date de naissance</th>
+            <th class="active text-center">{{ 'email'|trans }}E-mail</th>
+            <th class="active text-center">{{ 'role'|trans }}Rôle</th>
+            <th class="active text-center">{{ 'action'|trans }}Action</th>
         </tr>
 
         {% for utilisateur in utilisateurs %}
@@ -25,9 +25,12 @@
                     {{ role }}
                     {% endfor %}
                 </td>
-                <td><a href={{ path("utilisateur.edit",{id : utilisateur.id} )}}  class="btn btn-primary" >Modifier</a>
-                <a href={{ path("utilisateur.delete",{id : utilisateur.id} ) }} class="btn btn-danger">Supprimer</a>
-                <a href={{ path("utilisateur.show",{id : utilisateur.id} ) }} class="btn btn-info">Montrer</a></td>
+                <td><a href={{ path("utilisateur.edit",
+                        {id : utilisateur.id} )}}  class="btn btn-primary" >{{ 'edit'|trans }}</a>
+                <a href={{ path("utilisateur.delete",
+                    {id : utilisateur.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                <a href={{ path("utilisateur.show",
+                    {id : utilisateur.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
             </tr>
         {% endfor %}
     </table>
