@@ -11,15 +11,14 @@
 
         </ul>
     </div>
-    <div class="collapse navbar-collapse">
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
-        <a href="/trajet/{{commentaire.trajet.id}}/show" class="btn btn-success" role="button">
-            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>{{ 'cancel'|trans }}</a>
+    <a href="/trajet/{{commentaire.trajet.id}}/show"  role="button">
+        <button type="submit" class="btn btn-success">{{ 'cancel'|trans }}</button></a>
+
         <button type="submit" class="btn btn-danger" onclick="return confirm('{{ "confirm"|trans }}')">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             {{ 'suppr'|trans }}
     </button>
     {{ form_end(form) }}
-    </div>
 {% endblock %}

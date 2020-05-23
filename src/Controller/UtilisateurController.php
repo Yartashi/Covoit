@@ -83,7 +83,7 @@ class UtilisateurController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-            return $this->redirectToRoute('utilisateur.list');
+            return $this->redirectToRoute('trajet.list');
         }
         return $this->render('utilisateur/create.html.twig', [
             'form' => $form->createView(),
