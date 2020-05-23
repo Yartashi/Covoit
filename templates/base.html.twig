@@ -19,7 +19,8 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/trajet">Offres des trajets</a>      
+    <a class="navbar-brand" href="/trajet">Offres des trajets</a>
+    <a class="navbar-brand" href="/search-trajet">Rechercher des trajets</a>      
     {% if (app.user) %}
         {% if is_granted('ROLE_USER') %}
                     <a href="/nouveau-trajet" class="navbar-brand">{{ 'trajet-create'|trans }}</a>
