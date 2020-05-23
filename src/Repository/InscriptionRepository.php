@@ -19,6 +19,20 @@ class InscriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscription::class);
     }
 
+    /**
+    * @return Inscription[] Returns an array of Trajet objects
+    */
+    public function last5Inscription()
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT t
+            FROM App\Entity\Inscription t
+            ORDER BY t.id DESC
+            LIMIT 5');
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Inscription[] Returns an array of Inscription objects
     //  */

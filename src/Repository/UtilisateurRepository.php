@@ -19,6 +19,19 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
+    /**
+    * @return Utilisateur[] Returns an array of Trajet objects
+    */
+    public function last5Utilisateur()
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT t
+            FROM App\Entity\Utilisateur t
+            ORDER BY t.id DESC
+            LIMIT 5');
+        return $query->getResult();
+    }
     // /**
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */

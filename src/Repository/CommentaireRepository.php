@@ -19,6 +19,20 @@ class CommentaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Commentaire::class);
     }
 
+    /**
+    * @return Commentaire[] Returns an array of Trajet objects
+    */
+    public function last5Commentaire()
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT t
+            FROM App\Entity\Commentaire t
+            ORDER BY t.id DESC
+            LIMIT 5');
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Commentaire[] Returns an array of Commentaire objects
     //  */
