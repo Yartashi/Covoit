@@ -58,7 +58,7 @@ class InscriptionController extends AbstractController
                 $inscription->setDateInscr($date);
 
                 $utilisateur= new Utilisateur();
-                $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+                $utilisateur = $this->getUser();
                 $inscription->setUtilisateur($utilisateur);
 
                 $inscription->setTrajet($idtrajet);
@@ -99,7 +99,7 @@ class InscriptionController extends AbstractController
         $form->handleRequest($request);
         
         $utilisateur= new Utilisateur();
-        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        $utilisateur = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             if (
@@ -133,7 +133,7 @@ class InscriptionController extends AbstractController
         $form->handleRequest($request);
         
         $utilisateur= new Utilisateur();
-        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        $utilisateur = $this->getUser();
 
         if ( ! $form->isSubmitted() || ! $form->isValid()) {
             return $this->render('inscription/delete.html.twig', [

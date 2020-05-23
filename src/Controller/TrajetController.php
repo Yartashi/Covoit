@@ -3,13 +3,14 @@
 namespace App\Controller;
 use App\Entity\Trajet;
 use App\Entity\Utilisateur;
+use App\Form\TrajetSearchType;
 use App\Form\TrajetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\TrajetRepository;
 
 class TrajetController extends AbstractController
 {
@@ -50,7 +51,7 @@ class TrajetController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $utilisateur= new Utilisateur;
-            $utilisateur = $this->get('security.context')->getToken()->getUser();
+            $utilisateur = $this->getUser();
             $trajet->setConducteurId($utilisateur);
             $em->persist($trajet);
             $em->flush();
@@ -117,5 +118,31 @@ class TrajetController extends AbstractController
         $em->remove($trajet);
         $em->flush();
         return $this->redirectToRoute('trajet.list');
+    }
+
+
+    /**
+     * Chercher un trajet.
+     * @Route("/search-trajet", name="trajet.search")
+     * @param TrajetRepository $repo
+     * @param Request $request
+     * @return Response
+     */
+    public function search(TrajetRepository $repo,Request $request) : Response
+    { 
+        $trajet= new Trajet();
+        $form = $this->createForm(TrajetSearchType::class,$trajet);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+
+            $trajets = $repo->searchTrajets($trajet);
+            
+            return $this->render('trajet/list.html.twig', [
+                'trajets' => $trajets,
+                ]);
+        }
+        return $this->render('trajet/search.html.twig', [
+        'form' => $form->createView(),
+        ]);
     }
 }

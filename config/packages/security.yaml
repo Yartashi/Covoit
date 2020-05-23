@@ -32,6 +32,8 @@ security:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/trajet, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/nouveau-utilisateur$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/search-trajet$, roles:  IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/nouveau-trajet$, roles:  ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }
         

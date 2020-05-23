@@ -129,7 +129,7 @@ class UtilisateurController extends AbstractController
      */
     public function listTrajets() : Response
     {
-        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        $utilisateur = $this->getUser();
         return $this->render('trajet/list.html.twig', [
             'trajets' => $utilisateur->getTrajets(),
         ]);

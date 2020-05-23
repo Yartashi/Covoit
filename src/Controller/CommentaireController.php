@@ -57,7 +57,7 @@ class CommentaireController extends AbstractController
             $commentaire->setDateComm($date);
 
             $utilisateur= new Utilisateur();
-            $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+            $utilisateur = $this->getUser();
             $commentaire->setUtilisateur($utilisateur);
 
             $commentaire->setTrajet($idtrajet);
@@ -96,7 +96,7 @@ class CommentaireController extends AbstractController
         $form->handleRequest($request);
 
         $utilisateur= new Utilisateur();
-        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        $utilisateur = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             if($commentaire->getUtilisateur()->getId() === $utilisateur->getId())
@@ -127,7 +127,7 @@ class CommentaireController extends AbstractController
         $form->handleRequest($request);
         
         $utilisateur= new Utilisateur();
-        $utilisateur = $this->get('security.token_storage')->getToken()->getUser();
+        $utilisateur = $this->getUser();
 
         if ( ! $form->isSubmitted() || ! $form->isValid()) {
             return $this->render('commentaire/delete.html.twig', [
