@@ -1,119 +1,119 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>{{ 'home-trajet'|trans }}</h1>
- <table class="table text-center">
-        <tr>
-            <th class="active text-center">{{ 'date'|trans }}</th>
-            <th class="active text-center">{{ 'depart'|trans }}</th>
-            <th class="active text-center">{{ 'arrivee'|trans }}</th>
-            <th class="active text-center">{{ 'pl-rest'|trans }}</th>
-            <th class="active text-center">{{ 'status2'|trans }}</th>
-            <th class="active text-center">{{ 'conducteur'|trans }}</th>
-            <th class="active text-center">{{ 'action'|trans }}</th>
-
-        </tr>
-
-        {% for trajet in trajets %}
+    <div>
+    <h2 style="text-align:center;"><strong>{{ 'bienvenue'|trans }}</strong></h2>
+    <h1 style="text-align:center;"><strong>{{ 'titre'|trans }}</strong></h1>
+    <h3 style="text-align:center;">{{ 'site-annonces-covoiturage'|trans }}</h3>
+    </div>
+    </br>
+    <div>
+        <h2>{{ 'home-trajet'|trans }}</h2>
+        <table class="table text-center">
             <tr>
-                <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
-                <td>{{ trajet.villeDep }}</td>
-                <td>{{ trajet.villeDest }}</td>
-                <td>{{ trajet.calculerNbPlacesRestantes }}</td>
-                {% if trajet.statut == 1 %}
-                    <td>{{ 'dispo'|trans }}</td>
-                {% elseif trajet.statut == 2 %}
-                    <td>{{ 'pas-dispo'|trans }}</td>
-                {% endif %}
-                <td>{{trajet.conducteurId.username}}</td>
-                <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                <th class="active text-center">{{ 'date'|trans }}</th>
+                <th class="active text-center">{{ 'depart'|trans }}</th>
+                <th class="active text-center">{{ 'arrivee'|trans }}</th>
+                <th class="active text-center">{{ 'pl-rest'|trans }}</th>
+                <th class="active text-center">{{ 'status2'|trans }}</th>
+                <th class="active text-center">{{ 'conducteur'|trans }}</th>
+                <th class="active text-center">{{ 'action'|trans }}</th>
             </tr>
-        {% endfor %}
-    </table>
 
+            {% for trajet in trajets %}
+                <tr>
+                    <td>{{ trajet.dateDep|date("d/m/Y") }}</td>
+                    <td>{{ trajet.villeDep }}</td>
+                    <td>{{ trajet.villeDest }}</td>
+                    <td>{{ trajet.calculerNbPlacesRestantes }}</td>
+                    {% if trajet.statut == 1 %}
+                        <td>{{ 'dispo'|trans }}</td>
+                    {% elseif trajet.statut == 2 %}
+                        <td>{{ 'pas-dispo'|trans }}</td>
+                    {% endif %}
+                    <td>{{trajet.conducteurId.username}}</td>
+                    <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h2>{{ 'home-utilisateur'|trans }}</h2>
+        <table class="table text-center">
+            <tr>
+                <th class="active text-center">{{ 'username'|trans }}</th>
+            </tr>
 
-    <h1>{{ 'home-utilisateur'|trans }}</h1>
-    <table class="table text-center">
-        <tr>
-            <th class="active text-center">{{ 'username'|trans }}</th>
-        </tr>
-
-        {% for utilisateur in utilisateurs %}
+            {% for utilisateur in utilisateurs %}
             <tr>
                 <td>{{ utilisateur.username }}</td>
-        {% endfor %}
-    </table>
-
-
-    <h1>{{ 'home-inscription'|trans }}</h1>
-    <table class="table text-center">
-        <tr>
-            <th class="active text-center">{{ 'date'|trans }}</th>
-            <th class="active text-center">{{ 'depart'|trans }}</th>
-            <th class="active text-center">{{ 'arrivee'|trans }}</th>
-            <th class="active text-center">{{ 'pl-rest'|trans }}</th>
-            <th class="active text-center">{{ 'status2'|trans }}</th>
-            <th class="active text-center">{{ 'conducteur'|trans }}</th>
-            <th class="active text-center">{{ 'action'|trans }}</th>
-
-        </tr>
-
-        {% for inscription in inscriptions %}
+                {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h2>{{ 'home-inscription'|trans }}</h2>
+        <table class="table text-center">
             <tr>
-                <td>{{ inscription.trajet.dateDep|date("d/m/Y") }}</td>
-                <td>{{ inscription.trajet.villeDep }}</td>
-                <td>{{ inscription.trajet.villeDest }}</td>
-                <td>{{ inscription.trajet.calculerNbPlacesRestantes }}</td>
-                {% if inscription.trajet.statut == 1 %}
-                    <td>{{ 'dispo'|trans }}</td>
-                {% elseif inscription.trajet.statut == 2 %}
-                    <td>{{ 'pas-dispo'|trans }}</td>
-                {% endif %}
-                <td>{{ inscription.trajet.conducteurId.username }}</td>
-
-                
-                <td><a href={{ path("trajet.show",
-                        {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
-
+                <th class="active text-center">{{ 'date'|trans }}</th>
+                <th class="active text-center">{{ 'depart'|trans }}</th>
+                <th class="active text-center">{{ 'arrivee'|trans }}</th>
+                <th class="active text-center">{{ 'pl-rest'|trans }}</th>
+                <th class="active text-center">{{ 'status2'|trans }}</th>
+                <th class="active text-center">{{ 'conducteur'|trans }}</th>
+                <th class="active text-center">{{ 'action'|trans }}</th>
             </tr>
-        {% endfor %}
-    </table>
+
+            {% for inscription in inscriptions %}
+                <tr>
+                    <td>{{ inscription.trajet.dateDep|date("d/m/Y") }}</td>
+                    <td>{{ inscription.trajet.villeDep }}</td>
+                    <td>{{ inscription.trajet.villeDest }}</td>
+                    <td>{{ inscription.trajet.calculerNbPlacesRestantes }}</td>
+                    {% if inscription.trajet.statut == 1 %}
+                        <td>{{ 'dispo'|trans }}</td>
+                    {% elseif inscription.trajet.statut == 2 %}
+                        <td>{{ 'pas-dispo'|trans }}</td>
+                    {% endif %}
+                    <td>{{ inscription.trajet.conducteurId.username }}</td>
 
 
-
-<h1>{{ 'home-commentaire'|trans }}</h1>
-    <table class="table text-center">
-        <tr>
-            <th class="active text-center">{{ 'date'|trans }}</th>
-            <th class="active text-center">{{ 'depart'|trans }}</th>
-            <th class="active text-center">{{ 'arrivee'|trans }}</th>
-            <th class="active text-center">{{ 'message'|trans }}</th>
-            <th class="active text-center">{{ 'status2'|trans }}</th>
-            <th class="active text-center">{{ 'conducteur'|trans }}</th>
-            <th class="active text-center">{{ 'action'|trans }}</th>
-
-        </tr>
-
-        {% for commentaire in commentaires %}
+                    <td><a href={{ path("trajet.show",
+                            {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h2>{{ 'home-commentaire'|trans }}</h2>
+        <table class="table text-center">
             <tr>
-                <td>{{ commentaire.trajet.dateDep|date("d/m/Y") }}</td>
-                <td>{{ commentaire.trajet.villeDep }}</td>
-                <td>{{ commentaire.trajet.villeDest }}</td>
-                <td>{{ commentaire.messageComm }}</td>
-                {% if commentaire.trajet.statut == 1 %}
-                    <td>{{ 'dispo'|trans }}</td>
-                {% elseif commentaire.trajet.statut == 2 %}
-                    <td>{{ 'pas-dispo'|trans }}</td>
-                {% endif %}
-                <td>{{ commentaire.trajet.conducteurId.username }}</td>
-
-                
-                <td><a href={{ path("trajet.show",
-                        {id : commentaire.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
-
+                <th class="active text-center">{{ 'date'|trans }}</th>
+                <th class="active text-center">{{ 'depart'|trans }}</th>
+                <th class="active text-center">{{ 'arrivee'|trans }}</th>
+                <th class="active text-center">{{ 'message'|trans }}</th>
+                <th class="active text-center">{{ 'status2'|trans }}</th>
+                <th class="active text-center">{{ 'conducteur'|trans }}</th>
+                <th class="active text-center">{{ 'action'|trans }}</th>
             </tr>
-        {% endfor %}
-    </table>
+            {% for commentaire in commentaires %}
+                <tr>
+                    <td>{{ commentaire.trajet.dateDep|date("d/m/Y") }}</td>
+                    <td>{{ commentaire.trajet.villeDep }}</td>
+                    <td>{{ commentaire.trajet.villeDest }}</td>
+                    <td>{{ commentaire.messageComm }}</td>
+                    {% if commentaire.trajet.statut == 1 %}
+                        <td>{{ 'dispo'|trans }}</td>
+                    {% elseif commentaire.trajet.statut == 2 %}
+                        <td>{{ 'pas-dispo'|trans }}</td>
+                    {% endif %}
+                    <td>{{ commentaire.trajet.conducteurId.username }}</td>
 
+                    <td><a href={{ path("trajet.show",
+                            {id : commentaire.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 {% endblock %}

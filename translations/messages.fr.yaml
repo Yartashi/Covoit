@@ -69,7 +69,9 @@ langue: Langue
 liste-utilisateurs: 'Liste des utilisateurs'
 rechercher: Rechercher
 details-trajet: 'Détails du trajet'
-home-trajet: __home-trajet
-home-utilisateur: __home-utilisateur
-home-inscription: __home-inscription
-home-commentaire: __home-commentaire
+home-trajet: 'Les derniers trajets proposés'
+home-utilisateur: 'Les derniers inscrits'
+home-inscription: 'Les derniers trajets bookés'
+home-commentaire: 'Les derniers commentaires postés'
+bienvenue: 'Bienvenue sur'
+site-annonces-covoiturage: 'Le site de petites annonces de covoiturage'

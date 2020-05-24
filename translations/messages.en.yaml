@@ -69,7 +69,9 @@ langue: Language
 liste-utilisateurs: 'List of users'
 rechercher: Search
 details-trajet: 'Trip information'
-home-trajet: __home-trajet
-home-utilisateur: __home-utilisateur
-home-inscription: __home-inscription
-home-commentaire: __home-commentaire
+home-trajet: 'Latest trips'
+home-utilisateur: 'Latest members'
+home-inscription: 'Latest bookings'
+home-commentaire: 'Latest comments'
+bienvenue: 'Welcome to'
+site-annonces-covoiturage: 'The carpooling classified ads website'
