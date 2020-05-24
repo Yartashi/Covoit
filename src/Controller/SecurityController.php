@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
     {
         // Récupérer la redirection
          if ($this->getUser()) {
-             return $this->redirectToRoute('trajet.list');
+             return $this->redirectToRoute('homeLangue', array('_locale'=>$this->getUser()->getLangueChoix()));
          }
 
         // get the login error if there is one

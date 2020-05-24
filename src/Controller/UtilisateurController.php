@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UtilisateurController extends AbstractController
 {
     /**
-     * @Route("/utilisateur/index", name="utilisateur")
+     * @Route("/{_locale}/languutilisateur/index", name="utilisateur")
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Lister tous les utilisateurs.
-     * @Route("/admin/utilisateur", name="utilisateur.list")
+     * @Route("/{_locale}/admin/utilisateur", name="utilisateur.list")
      * @return Response
      */
     public function list() : Response
@@ -38,7 +38,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Créer un nouvel utilisateur.
-     * @Route("/nouveau-utilisateur", name="utilisateur.create")
+     * @Route("/{_locale}/nouveau-utilisateur", name="utilisateur.create")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return RedirectResponse|Response
@@ -59,7 +59,7 @@ class UtilisateurController extends AbstractController
     }
 
     /**
-     * @Route("/utilisateur/{id}/show", name="utilisateur.show")
+     * @Route("/{_locale}/utilisateur/{id}/show", name="utilisateur.show")
      * @param Utilisateur $utilisateur
      * @return Response
      */
@@ -124,7 +124,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Lister tous les trajets créés par l'utilisateur.
-     * @Route("/utilisateur-trajets", name="utilisateur-trajets.list")
+     * @Route("/{_locale}/utilisateur-trajets", name="utilisateur-trajets.list")
      * @return Response
      */
     public function listTrajets() : Response
@@ -137,7 +137,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Lister tous les trajets auxquels l'utilisateur s'est inscrit.
-     * @Route("/utilisateur-inscriptions", name="utilisateur-inscriptions.list")
+     * @Route("/{_locale}/utilisateur-inscriptions", name="utilisateur-inscriptions.list")
      * @return Response
      */
     public function listInscriptions() : Response
