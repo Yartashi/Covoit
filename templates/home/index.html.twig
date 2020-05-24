@@ -32,7 +32,7 @@
                         <td>{{ 'pas-dispo'|trans }}</td>
                     {% endif %}
                     <td>{{trajet.conducteurId.username}}</td>
-                    <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                    <td><a href={{ path("trajet.show",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -78,7 +78,7 @@
 
 
                     <td><a href={{ path("trajet.show",
-                            {id : inscription.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                            {id : inscription.trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -109,7 +109,7 @@
                     <td>{{ commentaire.trajet.conducteurId.username }}</td>
 
                     <td><a href={{ path("trajet.show",
-                            {id : commentaire.trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                            {id : commentaire.trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
 
                 </tr>
             {% endfor %}

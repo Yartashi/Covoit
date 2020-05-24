@@ -14,7 +14,7 @@
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
     
-        <a href="/trajet/{{inscription.trajet.id}}/show"  role="button">
+        <a href="/{{app.request.locale }}/trajet/{{inscription.trajet.id}}/show"  role="button">
         <button type="submit" class="btn btn-success">{{ 'cancel'|trans }}</button></a>
 
         <button type="submit" class="btn btn-danger" onclick="return confirm('{{ "confirm"|trans }}')">
