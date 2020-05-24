@@ -72,7 +72,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Éditer un utilisateur.
-     * @Route("utilisateur/{id}/edit", name="utilisateur.edit")
+     * @Route("/{_locale}/utilisateur/{id}/edit", name="utilisateur.edit")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return RedirectResponse|Response
@@ -92,7 +92,7 @@ class UtilisateurController extends AbstractController
 
     /**
      * Supprimer un utilisateur.
-     * @Route("utilisateur/{id}/delete", name="utilisateur.delete")
+     * @Route("/{_locale}/utilisateur/{id}/delete", name="utilisateur.delete")
      * @param Request $request
      * @param Utilisateur $utilisateur
      * @param EntityManagerInterface $em

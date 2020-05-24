@@ -15,7 +15,7 @@
     </div>
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
-    <a href="{{ path('utilisateur.list') }}"  role="button">
+    <a href="{{ path('utilisateur.list',{_locale:app.request.locale}) }}"  role="button">
         <button type="submit" class="btn btn-success">{{ 'cancel'|trans }}</button></a>
         
         

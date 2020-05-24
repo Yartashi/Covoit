@@ -27,17 +27,17 @@
                 <td>{{trajet.conducteurId.username}}</td>
 
                 {% if (not app.user) %}
-                    <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                    <td><a href={{ path("trajet.show",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                 {% else %}
                     {% if (app.user.username == trajet.conducteurId.username) %}
-                    <td><a href={{ path("trajet.edit",{id : trajet.id} )}} class="btn btn-primary">{{ 'edit'|trans }}</a>
-                        <a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
-                        <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                    <td><a href={{ path("trajet.edit",{id : trajet.id,_locale:app.request.locale} )}} class="btn btn-primary">{{ 'edit'|trans }}</a>
+                        <a href={{ path("trajet.delete",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                        <a href={{ path("trajet.show",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% elseif is_granted('ROLE_ADMIN') %}
-                        <td><a href={{ path("trajet.delete",{id : trajet.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
-                            <a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                        <td><a href={{ path("trajet.delete",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                            <a href={{ path("trajet.show",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% else %}
-                        <td><a href={{ path("trajet.show",{id : trajet.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                        <td><a href={{ path("trajet.show",{id : trajet.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
                     {% endif %}
                 {% endif %}
             </tr>

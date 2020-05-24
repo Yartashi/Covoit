@@ -15,7 +15,7 @@
     </div>
     {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
     {{ form_widget(form) }}
-        <a href="{{ path('trajet.list') }}"  role="button"><button type="submit" class="btn btn-success">{{ 'cancel'|trans }}</button></a>
+        <a href="{{ path('trajet.list',{_locale:app.request.locale}) }}"  role="button"><button type="submit" class="btn btn-success">{{ 'cancel'|trans }}</button></a>
         <button type="submit" class="btn btn-danger" onclick="return confirm('{{ "confirm"|trans }}')">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             {{ 'suppr'|trans }}

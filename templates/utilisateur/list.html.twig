@@ -26,11 +26,11 @@
                     {% endfor %}
                 </td>
                 <td><a href={{ path("utilisateur.edit",
-                        {id : utilisateur.id} )}}  class="btn btn-primary" >{{ 'edit'|trans }}</a>
+                        {id : utilisateur.id,_locale:app.request.locale} )}}  class="btn btn-primary" >{{ 'edit'|trans }}</a>
                 <a href={{ path("utilisateur.delete",
-                    {id : utilisateur.id} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
+                    {id : utilisateur.id,_locale:app.request.locale} ) }} class="btn btn-danger">{{ 'suppr'|trans }}</a>
                 <a href={{ path("utilisateur.show",
-                    {id : utilisateur.id} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
+                    {id : utilisateur.id,_locale:app.request.locale} ) }} class="btn btn-info">{{ 'show'|trans }}</a></td>
             </tr>
         {% endfor %}
     </table>

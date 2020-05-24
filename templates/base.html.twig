@@ -27,25 +27,25 @@
         {% if is_granted('ROLE_USER') %}
                     <a href="/{{app.request.locale }}/nouveau-trajet" class="navbar-brand">{{ 'creer-trajet'|trans }}</a>
                     <a href="/{{app.request.locale }}/utilisateur-trajets" class="navbar-brand">{{ 'mes-annonces'|trans }}</a>
-                    <a href="/{{app.request.locale }}/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
+                    <a href="}/{{app.request.locale }}/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
                     <a href={{ path("utilisateur.edit", {id : app.user.id,_locale:app.request.locale} )}} class="navbar-brand" >{{ 'mon-profil'|trans }}</a>
 
         {% if is_granted('ROLE_ADMIN') %}
 
-            <a href="/admin/utilisateur" class="navbar-brand">{{ 'administration'|trans }}</a>
+            <a href="/{{app.request.locale }}/admin/utilisateur" class="navbar-brand">{{ 'administration'|trans }}</a>
 
             {% endif %}
         {% endif %}
     {% else %}
 
-            <a href="/nouveau-utilisateur" class="navbar-brand">{{ 'sign-in'|trans }}</a>
+            <a href="/{{app.request.locale }}/nouveau-utilisateur" class="navbar-brand">{{ 'sign-in'|trans }}</a>
 
     {% endif %}
 
             {% if app.user %}
-                <a href="/logout" class="navbar-brand">{{ 'logout'|trans }}</a>
+                <a href="/{{app.request.locale }}/logout" class="navbar-brand">{{ 'logout'|trans }}</a>
             {% else %}
-                <a href="/login" class="navbar-brand">{{ 'login'|trans }}</a>
+                <a href="/{{app.request.locale }}/login" class="navbar-brand">{{ 'login'|trans }}</a>
             {% endif %}
 
             <div class="dropdown show">
