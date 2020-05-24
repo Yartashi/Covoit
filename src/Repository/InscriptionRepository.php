@@ -28,8 +28,8 @@ class InscriptionRepository extends ServiceEntityRepository
         $query = $entityManager->createQuery(
             'SELECT t
             FROM App\Entity\Inscription t
-            ORDER BY t.id DESC
-            LIMIT 5');
+            ORDER BY t.id DESC');
+        $query->setMaxResults(5);
         return $query->getResult();
     }
 

@@ -69,3 +69,7 @@ langue: Language
 liste-utilisateurs: 'List of users'
 rechercher: Search
 details-trajet: 'Trip information'
+home-trajet: __home-trajet
+home-utilisateur: __home-utilisateur
+home-inscription: __home-inscription
+home-commentaire: __home-commentaire

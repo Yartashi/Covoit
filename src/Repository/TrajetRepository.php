@@ -71,14 +71,14 @@ class TrajetRepository extends ServiceEntityRepository
     /**
     * @return Trajet[] Returns an array of Trajet objects
     */
-    public function last5Trajet()
+    public function last5Trajets()
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
             'SELECT t
             FROM App\Entity\Trajet t
-            ORDER BY t.id DESC
-            LIMIT 5');
+            ORDER BY t.id DESC');
+            $query->setMaxResults(5);
         return $query->getResult();
     }
 

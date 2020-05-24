@@ -9,14 +9,20 @@ use App\Repository\InscriptionRepository;
 use App\Repository\TrajetRepository;
 use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
+     * @param TrajetRepository $repoTrajet
+     * @param UtilisateurRepository $repoUtilisateur
+     * @param CommentaireRepository $repoCommentaire
+     * @param InscriptionRepository $repoInscription
+     * @return Response
      */
-    public function index(TrajetRepository $repoTrajet,UtilisateurRepository $repoUtilisateur,CommentaireRepository $repoCommentaire,InscriptionRepository $repoInscription)
+    public function index(TrajetRepository $repoTrajet,UtilisateurRepository $repoUtilisateur,CommentaireRepository $repoCommentaire,InscriptionRepository $repoInscription):Response
     {
         $trajets = $repoTrajet->last5Trajets();
         $utilisateurs = $repoUtilisateur->last5Utilisateur();

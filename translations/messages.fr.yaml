@@ -69,3 +69,7 @@ langue: Langue
 liste-utilisateurs: 'Liste des utilisateurs'
 rechercher: Rechercher
 details-trajet: 'Détails du trajet'
+home-trajet: __home-trajet
+home-utilisateur: __home-utilisateur
+home-inscription: __home-inscription
+home-commentaire: __home-commentaire
