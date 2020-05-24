@@ -13,10 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
+
 class CommentaireController extends AbstractController
 {
     /**
-     * @Route("/commentaire/index", name="commentaire")
+     * @Route("/{_locale}/commentaire/index", name="commentaire")
      */
     public function index()
     {
@@ -28,7 +29,7 @@ class CommentaireController extends AbstractController
 
     /**
      * Lister tous les commentaires.
-     * @Route("/commentaire", name="commentaire.list")
+     * @Route("/{_locale}/commentaire", name="commentaire.list")
      * @return Response
      */
     public function list() : Response
@@ -41,7 +42,7 @@ class CommentaireController extends AbstractController
 
     /**
      * Créer un nouveau commentaire.
-     * @Route("/nouveau-commentaire/{idtrajet}", name="commentaire.create")
+     * @Route("/{_locale}/nouveau-commentaire/{idtrajet}", name="commentaire.create")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @param Trajet $idtrajet
@@ -72,7 +73,7 @@ class CommentaireController extends AbstractController
     }
 
     /** 
-    * @Route("/commentaire/{id}/show", name="commentaire.show")
+    * @Route("/{_locale}/commentaire/{id}/show", name="commentaire.show")
     * @param Commentaire $commentaire
     * @return Response
     */
@@ -85,7 +86,7 @@ class CommentaireController extends AbstractController
 
     /**
     * Éditer un commentaire.
-    * @Route("commentaire/{id}/edit", name="commentaire.edit")
+    * @Route("/{_locale}/commentaire/{id}/edit", name="commentaire.edit")
     * @param Request $request
     * @param EntityManagerInterface $em
     * @return RedirectResponse|Response
@@ -113,7 +114,7 @@ class CommentaireController extends AbstractController
 
     /**
     * Supprimer un commentaire.
-    * @Route("commentaire/{id}/delete", name="commentaire.delete")
+    * @Route("/{_locale}/commentaire/{id}/delete", name="commentaire.delete")
     * @param Request $request
     * @param Commentaire $commentaire
     * @param EntityManagerInterface $em

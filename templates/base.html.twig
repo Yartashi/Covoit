@@ -21,14 +21,14 @@
 <body>
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/trajet">{{ 'offres-trajets'|trans }}</a>
-    <a class="navbar-brand" href="/search-trajet">{{ 'rechercher-trajet'|trans }}</a>
+    <a class="navbar-brand" href="/{{app.request.locale }}/trajet">{{ 'offres-trajets'|trans }}</a>
+    <a class="navbar-brand" href="/{{app.request.locale }}/search-trajet">{{ 'rechercher-trajet'|trans }}</a>
     {% if (app.user) %}
         {% if is_granted('ROLE_USER') %}
-                    <a href="/nouveau-trajet" class="navbar-brand">{{ 'creer-trajet'|trans }}</a>
-                    <a href="/utilisateur-trajets" class="navbar-brand">{{ 'mes-annonces'|trans }}</a>
-                    <a href="/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
-                    <a href={{ path("utilisateur.edit", {id : app.user.id} )}} class="navbar-brand" >{{ 'mon-profil'|trans }}</a>
+                    <a href="/{{app.request.locale }}/nouveau-trajet" class="navbar-brand">{{ 'creer-trajet'|trans }}</a>
+                    <a href="/{{app.request.locale }}/utilisateur-trajets" class="navbar-brand">{{ 'mes-annonces'|trans }}</a>
+                    <a href="/{{app.request.locale }}/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
+                    <a href={{ path("utilisateur.edit", {id : app.user.id,_locale:app.request.locale} )}} class="navbar-brand" >{{ 'mon-profil'|trans }}</a>
 
         {% if is_granted('ROLE_ADMIN') %}
 
@@ -55,7 +55,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {% for key,locale in locales %}
-                <a class="dropdown-item" href="{{ path(app.request.get('_route'),
+                <a class="dropdown-item" href="{{ path("homeLangue",
                 app.request.attributes.get('_route_params')|merge({'_locale': key})) }}">{{locale}}</a>
                 {% endfor %}
             </div>

@@ -16,7 +16,7 @@ class InscriptionController extends AbstractController
 {
 
     /**
-     * @Route("/inscription/index", name="inscription")
+     * @Route("/{_locale}/inscription/index", name="inscription")
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class InscriptionController extends AbstractController
 
     /**
      * Lister tous les inscriptions.
-     * @Route("/inscription", name="inscription.list")
+     * @Route("/{_locale}/inscription", name="inscription.list")
      * @return Response
      */
     public function list() : Response
@@ -40,7 +40,7 @@ class InscriptionController extends AbstractController
 
     /**
      * Créer un nouveau inscription.
-     * @Route("/nouveau-inscription/{idtrajet}", name="inscription.create")
+     * @Route("/{_locale}/nouveau-inscription/{idtrajet}", name="inscription.create")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @param Trajet $idtrajet
@@ -75,7 +75,7 @@ class InscriptionController extends AbstractController
     }
 
     /** 
-    * @Route("/inscription/{id}/show", name="inscription.show")
+    * @Route("/{_locale}/inscription/{id}/show", name="inscription.show")
     * @param Inscription $inscription
     * @return Response
     */
@@ -88,7 +88,7 @@ class InscriptionController extends AbstractController
 
     /**
     * Éditer un inscription.
-    * @Route("inscription/{id}/edit", name="inscription.edit")
+    * @Route("/{_locale}/inscription/{id}/edit", name="inscription.edit")
     * @param Request $request
     * @param EntityManagerInterface $em
     * @return RedirectResponse|Response
@@ -119,7 +119,7 @@ class InscriptionController extends AbstractController
 
     /**
     * Supprimer un inscription.
-    * @Route("inscription/{id}/delete", name="inscription.delete")
+    * @Route("/{_locale}/inscription/{id}/delete", name="inscription.delete")
     * @param Request $request
     * @param Inscription $inscription
     * @param EntityManagerInterface $em

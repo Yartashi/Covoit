@@ -42,8 +42,8 @@ class UtilisateurType extends AbstractType
             ])
             ->add('langueChoix', ChoiceType::class, ['constraints'=>[new NotBlank()],
                 'choices' => [
-                    'Français' => 'FR',
-                    'Anglais' => 'EN',
+                    'Français' => 'fr',
+                    'Anglais' => 'en',
                 ]
             ]);
             if ($this->auth->isGranted('ROLE_ADMIN')){

@@ -12,10 +12,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\TrajetRepository;
 
+/* NE FAIT RIEN DU TOUT
+* @Route("/{_locale}/")
+*/
+
 class TrajetController extends AbstractController
 {
     /**
-     * @Route("/trajet/index", name="trajet")
+     * @Route("/{_locale}/trajet/index", name="trajet")
      */
     public function index()
     {
@@ -26,7 +30,7 @@ class TrajetController extends AbstractController
 
     /**
      * Lister tous les trajets.
-     * @Route("/trajet", name="trajet.list")
+     * @Route("/{_locale}/trajet", name="trajet.list")
      * @return Response
      */
     public function list() : Response
@@ -39,7 +43,7 @@ class TrajetController extends AbstractController
 
     /**
      * Créer un nouveau trajet.
-     * @Route("/nouveau-trajet", name="trajet.create")
+     * @Route("/{_locale}/nouveau-trajet", name="trajet.create")
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return RedirectResponse|Response
@@ -63,7 +67,7 @@ class TrajetController extends AbstractController
     }
 
     /** 
-    * @Route("/trajet/{id}/show", name="trajet.show")
+    * @Route("/{_locale}/trajet/{id}/show", name="trajet.show")
     * @param Trajet $trajet
     * @return Response
     */
@@ -76,7 +80,7 @@ class TrajetController extends AbstractController
 
     /**
     * Éditer un trajet.
-    * @Route("trajet/{id}/edit", name="trajet.edit")
+    * @Route("/{_locale}/trajet/{id}/edit", name="trajet.edit")
     * @param Request $request
     * @param EntityManagerInterface $em
     * @return RedirectResponse|Response
@@ -96,7 +100,7 @@ class TrajetController extends AbstractController
 
     /**
     * Supprimer un trajet.
-    * @Route("trajet/{id}/delete", name="trajet.delete")
+    * @Route("/{_locale}/trajet/{id}/delete", name="trajet.delete")
     * @param Request $request
     * @param Trajet $trajet
     * @param EntityManagerInterface $em
@@ -123,7 +127,7 @@ class TrajetController extends AbstractController
 
     /**
      * Chercher un trajet.
-     * @Route("/search-trajet", name="trajet.search")
+     * @Route("/{_locale}/search-trajet", name="trajet.search")
      * @param TrajetRepository $repo
      * @param Request $request
      * @return Response
