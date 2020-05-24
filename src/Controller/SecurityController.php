@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/{_locale}/login", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -29,11 +29,12 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/{_locale}/logout", name="app_logout")
+     * @param string string $_locale
      */
-    public function logout(TokenStorageInterface $tokenStorage)
+    public function logout(TokenStorageInterface $tokenStorage, string $_locale)
     {
         $tokenStorage->setToken(null);
-        return $this->redirectToRoute('app_login');
+        return $this->redirectToRoute('app_login', array('_locale'=>$_locale));
     }
 }

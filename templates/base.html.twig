@@ -27,7 +27,7 @@
         {% if is_granted('ROLE_USER') %}
                     <a href="/{{app.request.locale }}/nouveau-trajet" class="navbar-brand">{{ 'creer-trajet'|trans }}</a>
                     <a href="/{{app.request.locale }}/utilisateur-trajets" class="navbar-brand">{{ 'mes-annonces'|trans }}</a>
-                    <a href="}/{{app.request.locale }}/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
+                    <a href="/{{app.request.locale }}/utilisateur-inscriptions" class="navbar-brand">{{ 'mes-inscriptions'|trans }}</a>
                     <a href={{ path("utilisateur.edit", {id : app.user.id,_locale:app.request.locale} )}} class="navbar-brand" >{{ 'mon-profil'|trans }}</a>
 
         {% if is_granted('ROLE_ADMIN') %}
